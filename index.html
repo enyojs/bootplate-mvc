@@ -17,11 +17,11 @@
 	</head>
 	<body class="enyo-unselectable">
 		<script>
-			if (!window.App) {
+			if (!window.enyo) {
 				alert('No application build found, redirecting to debug.html.');
 				location = 'debug.html';
 			}
-			new App().renderInto(document.body);
+			enyo.start();
 		</script>
 	</body>
 </html>

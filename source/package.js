@@ -6,5 +6,6 @@ enyo.depends(
 	"ext",
 	"models",
 	"controllers",
-	"views"
+	"views",
+	"Core.js"
 );

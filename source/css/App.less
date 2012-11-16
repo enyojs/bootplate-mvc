@@ -1,0 +1,51 @@
+@border-color: #999;
+@background: #666;
+@area-background: #222;
+@text-color: #ff9900;
+
+.top-corners (@radius: 5px) {
+  border-top-left-radius: @radius;
+  border-top-right-radius: @radius;
+}
+
+.bottom-corners (@radius: 5px) {
+  border-bottom-left-radius: @radius;
+  border-bottom-right-radius: @radius;
+}
+
+.box-sizing () {
+  box-sizing: border-box;
+}
+
+#todo {
+  background: @background;
+  color: @text-color;
+}
+
+#todo {
+  .todo-default-panel {
+    background: @area-background;
+    padding: 13px 3px;
+    .box-sizing;
+  }
+}
+
+#todo-list {
+  .enyo-list-page {
+    &:first-child {
+      background: #fff;
+    }
+  }
+  .todo-item {
+    .box-sizing;
+    display: block;
+    padding: 5px;
+    background: @background;
+  }
+  .todo-item.first {
+    .top-corners;
+  }
+  .todo-item.last {
+    .bottom-corners;
+  }
+}

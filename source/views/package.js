@@ -1,3 +1,5 @@
 enyo.depends(
-  "App.js"
+  "App.js",
+  "List.js",
+  "Controls.js"
 );

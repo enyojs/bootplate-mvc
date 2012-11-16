@@ -1,3 +1,4 @@
 enyo.depends(
-  "AppController.js"
+  "TodoController.js",
+  "TodoControlsController.js"
 );
