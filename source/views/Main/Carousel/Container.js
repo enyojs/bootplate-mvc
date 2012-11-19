@@ -11,7 +11,11 @@ enyo.kind({
   },
   adjustBounds: function () {
     var r = enyo.application.rootView, t = r.$.toolbar.getBounds().height,
-        w = r.getBounds().height, m = this.maxHeight, h = w - t;
-    this.setBounds({height: m<h? m: h}, "px");
-  }
+        w = r.getBounds().height, m = this.maxHeight, h = w - t, s;
+    s = m<h? m: h;
+    this.setBounds({height: s}, "px");
+  },
+  components: [
+    {name: "controls", kind: "Mvc.CarouselControls"}
+  ]
 });

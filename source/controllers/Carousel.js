@@ -21,6 +21,7 @@ enyo.kind({
   },
   lengthChanged: function () {
     if (this.length > 1) this.start();
+    this.inherited(arguments);
   },
   bindings: [
     // example of a two-way binding, see the `next` method below
