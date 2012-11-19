@@ -1,51 +1,85 @@
-@border-color: #999;
-@background: #666;
-@area-background: #222;
-@text-color: #ff9900;
+@import "elements.less";
 
-.top-corners (@radius: 5px) {
-  border-top-left-radius: @radius;
-  border-top-right-radius: @radius;
+// Main.js
+#main {
 }
 
-.bottom-corners (@radius: 5px) {
-  border-bottom-left-radius: @radius;
-  border-bottom-right-radius: @radius;
-}
-
-.box-sizing () {
-  box-sizing: border-box;
-}
-
-#todo {
-  background: @background;
-  color: @text-color;
-}
-
-#todo {
-  .todo-default-panel {
-    background: @area-background;
-    padding: 13px 3px;
-    .box-sizing;
+#main {
+  .carousel-container {
+    width: 100%;
+    height: 300px;
+    .gradient(#60c5ff, #60c5ff, #bce7ff);
   }
 }
+#carousel {
+  height: 100%;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-#todo-list {
-  .enyo-list-page {
-    &:first-child {
-      background: #fff;
+#carousel {
+  .carousel-panel {
+    padding: 20px;
+    display: table;
+    height: 100%;
+    h1 {
+      color: #fff;
+      font-weight: bold;
+      display: table-cell;
+      vertical-align: middle;
+      margin: 0;
+      padding: 0;
+      font-size: 6vh;
     }
   }
-  .todo-item {
-    .box-sizing;
-    display: block;
-    padding: 5px;
-    background: @background;
+}
+
+// Divider.js
+#divider {
+  position: relative;
+  left: 0;
+  right: 0;
+  background: #ddd;
+  border: none;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ddd;
+  .bw-gradient(#ddd, 255, 230);
+}
+
+
+// Toolbar.js
+#toolbar {
+  z-index: 2;
+  position: relative;
+  .drop-shadow(0, 2px, 5px, 0.4);
+}
+
+#app-label {
+  font-weight: bold;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+  text-rendering: "optimizeLegibility";
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  .opacity(0.4);
+  
+  &:hover {
+    .opacity(0.8);
+    .transition(0.3s, ease-out);
   }
-  .todo-item.first {
-    .top-corners;
-  }
-  .todo-item.last {
-    .bottom-corners;
-  }
+}
+
+// Default.js
+#default {
+}
+
+// Documents.js
+#documents {
+  height: 2000px;
+}
+
+// Footer.js
+#footer {
+  min-height: 200px;
+  background: #ddd;
 }

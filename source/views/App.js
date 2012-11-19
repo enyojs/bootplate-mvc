@@ -12,21 +12,15 @@
 enyo.App({
   // the name of your application can be the scope reference for any
   // objects that comprise it
-  name: "Todo",
-  // the name of the app creates the default DOM id automatically
-  // (in our case here it is #todo) but you can add any CSS classes
-  // as you would normally
-  kind: "enyo.Panels",
-  arrangerKind: "enyo.CollapsingArranger",
+  name: "Mvc",
+  classes: "mvc-app",
   fit: true,
-  classes: "todo-app",
+  layoutKind: "enyo.FittableRowsLayout",
   // components are defined the same way they always were, make sure
   // to take a close look at the other views in this sample application
   // and see some of the other features/conventions that are available
   components: [
-    {classes: "todo-default-panel", layoutKind: "enyo.FittableRowsLayout", components: [
-      {kind: "Todo.Controls", id: "todo-controls"},
-      {kind: "Todo.List", id: "todo-list", fit: true}]},
-    {content: "placeholder", fit:true}
+    {name: "toolbar", kind: "Mvc.Toolbar"},
+    {name: "main", kind: "Mvc.Main"}
   ]
 });

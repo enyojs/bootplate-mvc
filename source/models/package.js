@@ -1,4 +1,5 @@
 enyo.depends(
-  "TodoModel.js",
-  "TodoCollection.js"
+  "Models",
+  "Collections",
+  "Scaffold.js"
 );

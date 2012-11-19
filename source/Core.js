@@ -8,8 +8,7 @@
     may be referenced by bindings when _enyo.View_ objects are created.
   */
   window.main = function () {
-    // for example...
-    enyo.singleton({name: "Todo.Controller", kind: "Todo.TodoController"});
+    enyo.singleton({name: "Mvc.CarouselController", kind: "Mvc.Controllers.Carousel"});
   };
   
   //*@public
@@ -18,8 +17,12 @@
     framework has started even if the method was loaded early.
   */
   enyo.run(function () {
-    // let's add a default todo entry
-    Todo.Controller.add({text: "This is the first todo!"});
+    // lets go ahead and add some default models to our carousel controller
+    // and see where they show up, later we'll see how their hooked up
+    // and even let you edit these in real-time or add more entries
+    // note that we already had some local-testing models defined in
+    // a scaffold object we are simply inserting here
+    Mvc.CarouselController.add(Mvc.Scaffold.CarouselEntries);
   });
   
 }());

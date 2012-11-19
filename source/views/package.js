@@ -1,5 +1,5 @@
 enyo.depends(
+  "Main",
   "App.js",
-  "List.js",
-  "Controls.js"
+  "Toolbar.js"
 );
