@@ -1,6 +1,6 @@
 enyo.kind({
   name: "Mvc.Controllers.Carousel",
-  kind: "enyo.CollectionController",
+  kind: "enyo.CollectionListController",
   collection: "Mvc.Models.CarouselEntries",
   handlers: {
     oncollectionadd: "didAdd"

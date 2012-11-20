@@ -2,5 +2,6 @@ enyo.depends(
   "Carousel.js",
   "CarouselPanel.js",
   "Container.js",
-  "Controls.js"
+  "Controls.js",
+  "CarouselList.js"
 );
