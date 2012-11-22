@@ -8,8 +8,7 @@ enyo.kind({
   classes: "main",
   fit: true,
   components: [
-    {kind: "Mvc.CarouselContainer", components: [
-      {name: "carousel", kind: "Mvc.Carousel"}]},
+    {name: "carousel", kind: "Mvc.Carousel"},
     {name: "divider", kind: "Mvc.Divider"},
     {name: "default", kind: "Mvc.Default"},
     {name: "documents", kind: "Mvc.Documents"},

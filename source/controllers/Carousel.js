@@ -1,32 +1,29 @@
 enyo.kind({
-  name: "Mvc.Controllers.Carousel",
-  kind: "enyo.CollectionListController",
-  collection: "Mvc.Models.CarouselEntries",
+  name: "Mvc.CarouselController",
+  kind: "enyo.CollectionController",
+  // here we actually set the collection property
+  // to the global collection controller instance
+  // we stood up in the main function
+  collection: "Mvc.CollectionController",
   handlers: {
     oncollectionadd: "didAdd"
   },
-  didAdd: function (inSender, inModel) {
-    var o = this.owner, p;
-    if (!o) return;
-    p = new Mvc.CarouselPanel();
-    p.controller.set("model", inModel);
-    o.addControl(p);
-    o.render();
-    return true;
-  },
+  bindings: [
+    {from: "owner.index", to: "index", oneWay: false}
+  ],
   timer: null,
   isStarted: false,
   published: {
     index: 0
   },
+  didAdd: function (sender, model) {
+    var panel = this.owner.createComponent({kind: "Mvc.CarouselPanel"});
+    panel.controller.set("model", model);
+    this.owner.render();
+  },
   lengthChanged: function () {
     if (this.length > 1) this.start();
-    this.inherited(arguments);
   },
-  bindings: [
-    // example of a two-way binding, see the `next` method below
-    {from: "owner.index", to: "index"}
-  ],
   start: function () {
     if (this.isStarted) return;
     this.stop();
@@ -41,8 +38,8 @@ enyo.kind({
     // note that we're retrieving our local `index` property that
     // has a two-way binding to our owner view such that when
     // we set our local `index` it also updates the views index
-    var i = this.get("index"), l = this.get("length");
-    if (i+1 === l) this.setIndex(0);
-    else this.setIndex(i+1);
+    var idx = this.get("index"), len = this.get("length");
+    if (idx+1 === len) this.setIndex(0);
+    else this.setIndex(idx+1);
   }
 });
