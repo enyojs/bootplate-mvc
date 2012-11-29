@@ -6,7 +6,7 @@ enyo.kind({
   id: "carousel-controls",
   components: [
     {name: "list", kind: "enyo.CollectionList", components: [
-      {name: "item", kind: "Mvc.ListRow", components: [
+      {kind: "Mvc.ListRow", components: [
         {bindProperty: "header"}]}], controller: "Mvc.CollectionController"}
   ]
 });
