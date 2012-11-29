@@ -66,6 +66,26 @@
   .opacity(0.8);
 }
 
+#carousel-controls {
+  .list-row {
+    color: #fff;
+    .item {
+      div {
+        padding: 10px;
+        background: #fff;
+        color: #60c5ff;
+        &.selected {
+          color: #fff;
+          background: #60c5ff;
+          .rounded(5px);
+          .transition(3s, ease-out);
+        }
+      }
+      margin: 10px;
+    }
+  }
+}
+
 #app-label {
   font-weight: bold;
   text-shadow: 0 1px rgba(0, 0, 0, 0.8);

@@ -13,7 +13,19 @@
     enyo.singleton({
       name: "Mvc.CollectionController", 
       kind: "enyo.CollectionController",
-      collection: "Mvc.CarouselCollection"
+      collection: "Mvc.CarouselCollection",
+      published: {
+        selected: 0
+      },
+      lengthChanged: function (prev, cur) {
+        if (prev === 0 && cur > 0) this.selectedChanged();
+      },
+      selectedChanged: function () {
+        var data = this.data, selected = this.selected;
+        enyo.forEach(data, function (model, idx) {
+          model.set({selected: idx === selected});
+        });
+      }
     });
   };
   

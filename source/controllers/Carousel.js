@@ -16,6 +16,10 @@ enyo.kind({
   published: {
     index: 0
   },
+  collectionChanged: function () {
+    this.inherited(arguments);
+    this.collection.set("selected", this.index);
+  },
   didAdd: function (sender, model) {
     var panel = this.owner.createComponent({kind: "Mvc.CarouselPanel"});
     panel.controller.set("model", model);
@@ -39,7 +43,12 @@ enyo.kind({
     // has a two-way binding to our owner view such that when
     // we set our local `index` it also updates the views index
     var idx = this.get("index"), len = this.get("length");
-    if (idx+1 === len) this.setIndex(0);
-    else this.setIndex(idx+1);
+    if (idx+1 === len) {
+      this.setIndex(0);
+      idx = 0;
+    } else {
+      this.setIndex(++idx);
+    }
+    this.collection.set("selected", idx);
   }
 });
