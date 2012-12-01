@@ -6,24 +6,28 @@ enyo.kind({
   // we stood up in the main function
   collection: "Mvc.CollectionController",
   handlers: {
-    oncollectionadd: "didAdd"
+    oncollectionadd: "didAdd",
+    onnext: "nextRequested"
   },
   bindings: [
-    {from: "owner.index", to: "index", oneWay: false}
+    {from: "owner.index", to: "index", oneWay: false},
+    {from: "Mvc.CollectionController.isEditing", to: "isEditing", oneWay: false},
+    {from: "index", to: "Mvc.CollectionController.carouselIndex", oneWay: false},
+    {from: "Mvc.CollectionController.listening", to: "listening"}
   ],
   timer: null,
   isStarted: false,
   published: {
     index: 0
   },
-  collectionChanged: function () {
-    this.inherited(arguments);
-    this.collection.set("selected", this.index);
-  },
   didAdd: function (sender, model) {
     var panel = this.owner.createComponent({kind: "Mvc.CarouselPanel"});
     panel.controller.set("model", model);
     this.owner.render();
+    if (this.listening) {
+      this.setIndex(this.collection.indexOf(model));
+      this.set("isEditing", true);
+    }
   },
   lengthChanged: function () {
     if (this.length > 1) this.start();
@@ -49,6 +53,14 @@ enyo.kind({
     } else {
       this.setIndex(++idx);
     }
-    this.collection.set("selected", idx);
+  },
+  nextRequested: function () {
+    this.stop();
+    this.next();
+    this.start();
+  },
+  isEditingChanged: function () {
+    if (this.isEditing) this.stop();
+    else this.start();
   }
 });

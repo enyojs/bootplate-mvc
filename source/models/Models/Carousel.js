@@ -5,7 +5,8 @@ enyo.kind({
   name: "Mvc.CarouselModel",
   kind: "enyo.Model",
   defaults: {
-    header: "{default header for Mvc.CarouselModel}",
-    selected: false
+    header: "The model you just created! Change my content.",
+    selected: false,
+    editing: false
   }
 });

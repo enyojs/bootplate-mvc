@@ -1,3 +1,4 @@
 enyo.depends(
-  "Carousel.js"
+  "Carousel.js",
+  "Editor.js"
 );

@@ -15,16 +15,21 @@
       kind: "enyo.CollectionController",
       collection: "Mvc.CarouselCollection",
       published: {
-        selected: 0
+        isEditing: false,
+        carouselIndex: 0,
+        listening: false
       },
-      lengthChanged: function (prev, cur) {
-        if (prev === 0 && cur > 0) this.selectedChanged();
+      editBinding: function () {
+        this.set("isEditing", true);
       },
-      selectedChanged: function () {
-        var data = this.data, selected = this.selected;
-        enyo.forEach(data, function (model, idx) {
-          model.set({selected: idx === selected});
-        });
+      addBinding: function () {
+        this.add({});
+      },
+      nextBinding: function () {
+        this.bubble("onnext");
+      },
+      go: function () {
+        this.set("listening", true);
       }
     });
   };
@@ -38,6 +43,7 @@
     // lets go ahead and add our included scaffold (fake) data-models to
     // our collection through the collection controller we stood up
     Mvc.CollectionController.add(Mvc.Scaffold.Carousel);
+    Mvc.CollectionController.go();
   });
   
 }());

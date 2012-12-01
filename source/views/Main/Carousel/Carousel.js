@@ -6,6 +6,9 @@ enyo.kind({
   id: "carousel",
   classes: "carousel-container",
   maxHeight: 400,
+  bindings: [
+    {from: "Mvc.CollectionController.isEditing", to: "isEditing"}
+  ],
   reflow: function () {
     this.adjustBounds();
     this.inherited(arguments);
@@ -17,9 +20,17 @@ enyo.kind({
     this.setBounds({height: s}, "px");
   },
   components: [
-    {name: "controls", kind: "Mvc.CarouselControls"},
     {name: "panels", kind: "enyo.Panels", draggable: false, fit: true,
       id: "carousel-panels", wrap: false, arrangerKind: "enyo.TopBottomArranger",
       controller: "Mvc.CarouselController"}
-  ]
+  ],
+  isEditingChanged: function () {
+    if (this.isEditing) {
+      if (this.hasClass("normal")) this.removeClass("normal");
+      this.addClass("editing");
+    } else if (this.hasClass("editing")) {
+      this.addClass("normal");
+      this.removeClass("editing");
+    }
+  }
 })
