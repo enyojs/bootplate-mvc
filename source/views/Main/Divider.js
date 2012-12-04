@@ -1,8 +1,9 @@
 (function () {
   
-    // Another toolbar
+    // The `Mvc.Divider` kind
     // ---------------
-    // TODO: Complete docs.
+    // Nothing too special here, just another kind with
+    // some CSS applied to it.
     enyo.kind({
         name: "Mvc.Divider",
         id: "divider",
