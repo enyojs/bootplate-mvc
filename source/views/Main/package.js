@@ -1,5 +1,5 @@
 enyo.depends(
-  "Roller",
-  "Main.js",
-  "Divider.js"
+    "Roller",
+    "Main.js",
+    "Divider.js"
 );

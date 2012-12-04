@@ -1,5 +1,5 @@
 enyo.depends(
-  "Models",
-  "Collections",
-  "Scaffold.js"
+    "Models",
+    "Collections",
+    "Scaffold.js"
 );

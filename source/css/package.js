@@ -1,3 +1,8 @@
 enyo.depends(
-  "App.less"
+    "App.less",
+    "Roller.less",
+    "Main.less",
+    "Editor.less",
+    "Divider.less",
+    "Toolbar.less"
 );

@@ -1,4 +1,4 @@
 enyo.depends(
-  "Roller.js",
-  "RollerPanel.js"
+    "Roller.js",
+    "RollerPanel.js"
 );
