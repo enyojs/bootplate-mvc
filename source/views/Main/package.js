@@ -1,8 +1,5 @@
 enyo.depends(
-  "Carousel",
+  "Roller",
   "Main.js",
-  "Default.js",
-  "Divider.js",
-  "Documents.js",
-  "Footer.js"
+  "Divider.js"
 );

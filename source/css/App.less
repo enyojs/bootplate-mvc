@@ -5,7 +5,7 @@
 }
 
 #main {
-  .carousel-container {
+  .roller-container {
     .gradient(#60c5ff, #60c5ff, #bce7ff);
     width: 100%;
     height: 300px;
@@ -19,15 +19,15 @@
     .opacity(1.0);
   }
 }
-#carousel-panels {
+#roller-panels {
   height: 100%;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
 }
 
-#carousel {
-  .carousel-panel {
+#roller {
+  .roller-panel {
     padding: 20px;
     display: table;
     height: 100%;
@@ -61,36 +61,6 @@
   z-index: 3;
   position: relative;
   .drop-shadow(0, 2px, 5px, 0.4);
-}
-
-#carousel-controls {
-  position: absolute;
-  right: 0;
-  z-index: 2;
-  width: 250px;
-  background: #fff;
-  overflow-y: hidden;
-  height: inherit;
-  .opacity(0.8);
-}
-
-#carousel-controls {
-  .list-row {
-    color: #fff;
-    .item {
-      div {
-        padding: 10px;
-        background: #fff;
-        color: #60c5ff;
-        &.selected {
-          color: #fff;
-          background: #60c5ff;
-          .rounded(5px);
-        }
-      }
-      margin: 10px;
-    }
-  }
 }
 
 #app-label {
@@ -139,10 +109,6 @@
       .rounded(5px);
     }
   }
-}
-
-// Default.js
-#default {
 }
 
 // Documents.js
