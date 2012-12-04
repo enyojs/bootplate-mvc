@@ -1,7 +1,7 @@
 (function () {
   
-    // The `Mvc.EditorController` class
-    // --------------------------------
+    // The `Mvc.EditorController` kind
+    // -------------------------------
     // ## Extending `enyo.ModelController`
     //
     enyo.kind({

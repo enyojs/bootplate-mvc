@@ -1,7 +1,7 @@
 (function () {
   
-    // The `Mvc.ApplicationController`
-    // -------------------------------
+    // The `Mvc.ApplicationController` kind
+    // ------------------------------------
     // This is the class definition of the global/singleton
     // application controller `Mvc.controller` that is instanced
     // in the `main` function in `Core.js`.

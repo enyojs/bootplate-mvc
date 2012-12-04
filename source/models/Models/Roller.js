@@ -1,7 +1,7 @@
 (function () {
   
-    // The `Mvc.RollerModel` class
-    // ---------------------------
+    // The `Mvc.RollerModel` kind
+    // --------------------------
     // ## Extends `enyo.Model`
     // 
     // A very simple model that only has 2
@@ -10,7 +10,7 @@
         name: "Mvc.RollerModel",
         kind: "enyo.Model",
         defaults: {
-            header: "You just created a new model! Definitely change the content.",
+            header: "You just created a new record! Definitely change the content.",
             editing: false
         }
     });
