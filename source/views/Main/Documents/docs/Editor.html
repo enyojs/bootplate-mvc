@@ -1,0 +1,54 @@
+ <!-- generated from template for editor.js -->      <section class="file">   <header>     <span class="title">Editor.js</span>     <span class="path">source/controllers/Editor.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Mvc.Editor</code> class</h2>
+
+<p>The editor is a <em>view</em> that is only visible when the application
+state property (on <code>Mvc.controller</code>) is set to true. This is only
+set to true when the <code>edit</code> button is selected. Using some CSS
+(using Less!) we can create the effect of an overlay. With proper
+bindings, we can setup a text-editor with the modifiable content
+of the underlying model, and proper bindings to other views allows
+real-time updates without any additional work.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.Editor&quot;</span><span class="p">,</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;editor&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We use a custom controller <em>kind</em>. This controller is refered to
+as a <em>view controller</em> as it is <em>owned</em> by this <em>view</em> and has
+awareness of it. By setting the <code>controller</code> property to a <em>class</em>
+instead of an instance, the <code>enyo.View</code> (also <code>enyo.Control</code>)
+automatically created an instance of the controller. All events from
+the <em>view</em> are propagated to the <em>controller</em> where it can have its
+own named event handlers, listeners, etc. If it returns true for any
+handlers propagation (bubbling) ends as expected, if not the event
+is routed right back up through the <em>view</em>. This allows us to take
+non-view related logic and supplant it on a separate class that has
+additional functionality.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;Mvc.EditorController&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We are able to create relative-pathed bindings for both the <code>from</code>
+and <code>to</code> properties. One thing to note is that the controller is
+a subclass of <code>enyo.ModelController</code> - this allows us to bind directly
+to properties of the <em>controller</em> as if it were the model itself.
+It also means that we could make changes to the model directly or
+swap it out altogether and those properties/changes would automatically
+propagate back to the <em>view</em> because of bindings. Notice the
+explicit selection of target (<em>to</em>) properties. Fort he <em>label</em> child
+use content but for the <em>input</em> child we selected the <code>value</code> property.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;controller.header&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;$.label.content&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;controller.header&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;$.input.value&quot;</span><span class="p">}</span>
+        <span class="p">],</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We use a custom <em>layout</em> kind that can be found in the <code>ext</code> directory
+in the project source.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">layoutKind</span><span class="o">:</span> <span class="s2">&quot;Mvc.FitToTargetBoundsLayout&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>The <em>layout</em> looks for this property when detecting what <em>view</em> we
+wish to match the bounds for. This is only necessary due to limitations
+in the way the CSS is applied - this editor becomes visible over the
+<em>roller</em>, but the <em>roller</em>'s opacity changes. In order to keep our
+opacity unaffected we have a different parent but to match sizes we
+need to have a reference to the target. From this path the <em>layout</em> will
+find it and set our bounds accordingly.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">fitTarget</span><span class="o">:</span> <span class="s2">&quot;owner.$.roller&quot;</span><span class="p">,</span>
+        <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;info1&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;input-label&quot;</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;There is a model being used to store &quot;</span> <span class="o">+</span>
+                <span class="s2">&quot;the message you see below. Edit it in the textarea and see the real-time changes to the &quot;</span> <span class="o">+</span>
+                <span class="s2">&quot;model and how they propagate to the view&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;input-label model-view&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.Button&quot;</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Done Editing&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;done-button&quot;</span><span class="p">,</span> <span class="nx">ontap</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.InputDecorator&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;input-area&quot;</span><span class="p">,</span> <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.TextArea&quot;</span><span class="p">}]}</span>
+        <span class="p">]</span>
+    <span class="p">});</span>
+
+<span class="p">}());</span>
+
+</pre></div>       </section>     </section>    </section>

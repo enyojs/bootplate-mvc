@@ -39,7 +39,7 @@
             {name: "roller", kind: "Mvc.Roller"},
             {name: "editor", kind: "Mvc.Editor"},
             {name: "divider", kind: "Mvc.Divider"},
-            {name: "documents", id: "documents", tag: "section"},
+            {name: "documents", kind: "Mvc.Documents"},
             {name: "footer", id: "footer", tag: "footer"}
         ],
         // This is an ugly hack for forcing Chrome to re-render sub-layers
