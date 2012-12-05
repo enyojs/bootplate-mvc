@@ -1,0 +1,25 @@
+
+<!-- generated from template for <%= title.toLowerCase() %> -->   
+<%
+  var source = (function () {
+    for (var key in sources) if (sources[key].indexOf(title) > -1) return sources[key];
+  })();
+%>
+
+<section class="file">
+  <header>
+    <span class="title"><%= title %></span>
+    <span class="path"><%= source %></span>
+  </header>
+  <% for (var i=0, len=sections.length; i<len; ++i) { %>
+    <% var section = sections[i]; %>
+    <section class="group">
+      <section class="comments">
+        <%= section.docsHtml %>
+      </section>
+      <section class="source">
+        <%= section.codeHtml %>
+      </section>
+    </section>
+  <% } %>
+</section>

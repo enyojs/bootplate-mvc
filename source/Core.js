@@ -1,6 +1,6 @@
 (function () {
 
-    // The main function
+    // The `main` function
     // -----------------
     // The idea behind the `main` function is similar to many other languages.
     // Think of this as the `main` starting place for the application -
@@ -13,8 +13,6 @@
     // objects/singletons - so that's what we've done in this app.
     window.main = function () {
       
-        // Our singleton application-scoped `enyo.CollectionController`
-        // ------------------------------------------------------------
         // For this example application, `MVC` (or namespace `Mvc`), we
         // are sharing a single collection of models throughout the app.
         // This is both awesome and can be tricky depending on what you

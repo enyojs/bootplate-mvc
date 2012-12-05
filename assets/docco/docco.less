@@ -1,0 +1,104 @@
+section {
+    
+    display: block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    
+    // each article represents one source file
+    &.file {
+        font-family: "Helvetica Neue", "Nimbus Sans L", Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+        margin: 0;
+        padding: 5px;
+        line-height: 20px;
+    }
+    
+    // code tags
+    code {
+        padding: 4px;
+        background: #eee;
+        font-size: 13px;
+    }
+    
+    // each file-article has a header
+    &.file header {
+        .title {
+            font-size: 35px;
+            font-weight: bold;
+        }
+        .path {
+            font-size: 18px;
+        }
+    }
+    
+    // each file-article has a section "group" that
+    // also contains the generated documentation/markup
+    // for the comments and the associated source code
+    &.file section {
+        
+        // these are the outter-most sections and are
+        // broken up by the parser
+        &.group {
+            position: relative;
+            margin: 0 5px;
+            padding: 5px;
+            min-height: 18px;
+            
+        
+            // this is the comment/documentation section of
+            // the group
+            .comments {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 50%;
+                
+                h2 {
+                    display: block;
+                    font-size: 16px;
+                    
+                    code {
+                        display: inline-block;
+                        font-size: 14px;
+                        font-weight: normal;
+                    }
+                }
+            }
+            
+            // this is the code related to the group's comments
+            // and documentation
+            .source {
+                position: absolute;
+                top: 5px;
+                left: 50%;
+                width: 50%;
+            }
+        }
+    }
+}
+
+// here are the classes for the various syntax-highlights
+// that we are interested in
+
+@keyword:   #954121;
+@instance:  #19469d;
+@string:    #219161;
+@constant:  #bb6688;
+@other:     #666;
+
+// keyword
+.k      { color: @keyword; }
+// keyword declaration
+.kd     { color: @keyword; }
+// name builtin
+.nb     { color: @keyword; }
+// name variable
+.nx     { color: @other; font-weight: bold; }
+// string
+.s2     { color: @string; }
+.s1     { color: @string; }
+// constant
+.kc     { color: @constant; }
