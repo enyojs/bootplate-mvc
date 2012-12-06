@@ -33,6 +33,11 @@
             // We know the kind to create it from, `Mvc.ApplicationController`.
             kind: "Mvc.ApplicationController"
         });
+        
+        enyo.singleton({
+            name: "Mvc.documents",
+            kind: "Mvc.DocumentsController"
+        });
     };
     
     // The `enyo.run` method

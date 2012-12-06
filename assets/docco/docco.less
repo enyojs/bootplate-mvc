@@ -38,6 +38,7 @@ section {
     // also contains the generated documentation/markup
     // for the comments and the associated source code
     &.file section {
+        display: table;
         
         // these are the outter-most sections and are
         // broken up by the parser
@@ -46,14 +47,17 @@ section {
             margin: 0 5px;
             padding: 5px;
             min-height: 18px;
+            display: table-row;
+            width: auto;
+            overflow-x: scroll;
             
         
             // this is the comment/documentation section of
             // the group
             .comments {
-                position: relative;
-                top: 0;
-                left: 0;
+                display: table-cell;
+                min-width: 320px;
+                max-width: 380px;
                 width: 50%;
                 
                 h2 {
@@ -71,10 +75,10 @@ section {
             // this is the code related to the group's comments
             // and documentation
             .source {
-                position: absolute;
-                top: 5px;
-                left: 50%;
-                width: 50%;
+                display: table-cell;
+                pre {
+                    font-size: 12px;
+                }
             }
         }
     }

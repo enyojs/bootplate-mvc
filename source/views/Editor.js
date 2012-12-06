@@ -49,11 +49,13 @@
         // find it and set our bounds accordingly.
         fitTarget: "owner.$.roller",
         components: [
-            {name: "info1", classes: "input-label", content: "There is a model being used to store " +
-                "the message you see below. Edit it in the textarea and see the real-time changes to the " +
-                "model and how they propagate to the view"},
+            {name: "info1", classes: "input-label", content: "There is a model " +
+                "being used to store the message you see below. Edit it in the " +
+                "textarea and see the real-time changes to the model and how they " +
+                "propagate to the view"},
             {name: "label", classes: "input-label model-view"},
-            {name: "done", kind: "onyx.Button", content: "Done Editing", classes: "done-button", ontap: "done"},
+            {name: "done", kind: "onyx.Button", content: "Done Editing",
+                classes: "done-button", ontap: "done"},
             {kind: "onyx.InputDecorator", classes: "input-area", components: [
                 {name: "input", kind: "onyx.TextArea"}]}
         ]

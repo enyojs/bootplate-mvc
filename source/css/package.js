@@ -4,5 +4,6 @@ enyo.depends(
     "Main.less",
     "Editor.less",
     "Divider.less",
-    "Toolbar.less"
+    "Toolbar.less",
+    "Documents.less"
 );
