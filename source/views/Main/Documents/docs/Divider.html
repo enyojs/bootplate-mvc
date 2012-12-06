@@ -1,0 +1,31 @@
+ <!-- generated from template for divider.js -->      <section class="file">   <header>     <span class="title">Divider.js</span>     <span class="path">source/views/Main/Divider.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Mvc.Divider</code> kind</h2>
+
+<p>Nothing too special here, just another kind with
+some CSS applied to it.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.Divider&quot;</span><span class="p">,</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;divider&quot;</span><span class="p">,</span>
+        <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.MoreToolbar&quot;</span><span class="p">,</span>
+        <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;Mvc.documents&quot;</span><span class="p">,</span>
+        <span class="nx">handlers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">didadd</span><span class="o">:</span> <span class="s2">&quot;addDocButton&quot;</span>
+        <span class="p">},</span>
+        <span class="nx">addDocButton</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">controller</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">src</span><span class="p">,</span> <span class="nx">label</span><span class="p">,</span> <span class="nx">child</span><span class="p">;</span>
+            <span class="nx">label</span> <span class="o">=</span> <span class="nx">src</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">src</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">src</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+            <span class="nx">child</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createComponent</span><span class="p">({</span>
+                <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.Button&quot;</span><span class="p">,</span>
+                <span class="nx">content</span><span class="o">:</span> <span class="nx">label</span><span class="p">,</span> 
+                <span class="nx">ontap</span><span class="o">:</span> <span class="s2">&quot;selectSource&quot;</span><span class="p">,</span>
+                <span class="nx">index</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">index</span>
+            <span class="p">});</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+        <span class="p">},</span>
+        <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Annotated Source Files: &quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">});</span>
+  
+<span class="p">}());</span>
+
+</pre></div>       </section>     </section>    </section>

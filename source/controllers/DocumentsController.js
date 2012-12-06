@@ -1,8 +1,10 @@
 (function () {
     
     var root = "source/views/Main/Documents/docs/%..html", documents = [
-        "Toolbar", "Scaffold", "RollerLayout", "FitToTargetBoundsLayout",
-        "Editor", "Core", "ApplicationController", "App"
+        "App", "ApplicationController", "Core", "Divider", "Documents",
+        "DocumentsController", "Editor", "EditorController",
+        "FitToTargetBoundsLayout", "Main", "Roller", "RollerCollection",
+        "RollerLayout", "RollerModel", "RollerPanel", "Scaffold", "Toolbar"
     ], loadDocs, loadDoc;
     
     enyo.kind({
