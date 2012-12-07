@@ -1,43 +1,71 @@
  <!-- generated from template for documentscontroller.js -->      <section class="file">   <header>     <span class="title">DocumentsController.js</span>     <span class="path">source/controllers/DocumentsController.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    
-    <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="s2">&quot;source/views/Main/Documents/docs/%..html&quot;</span><span class="p">,</span> <span class="nx">documents</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;App&quot;</span><span class="p">,</span> <span class="s2">&quot;ApplicationController&quot;</span><span class="p">,</span> <span class="s2">&quot;Core&quot;</span><span class="p">,</span> <span class="s2">&quot;Divider&quot;</span><span class="p">,</span> <span class="s2">&quot;Documents&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;DocumentsController&quot;</span><span class="p">,</span> <span class="s2">&quot;Editor&quot;</span><span class="p">,</span> <span class="s2">&quot;EditorController&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;FitToTargetBoundsLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;Main&quot;</span><span class="p">,</span> <span class="s2">&quot;Roller&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerCollection&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;RollerLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerModel&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerPanel&quot;</span><span class="p">,</span> <span class="s2">&quot;Scaffold&quot;</span><span class="p">,</span> <span class="s2">&quot;Toolbar&quot;</span>
-    <span class="p">],</span> <span class="nx">loadDocs</span><span class="p">,</span> <span class="nx">loadDoc</span><span class="p">;</span>
-    
-    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally scoped variables to use during the loadup process.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">documents</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;App&quot;</span><span class="p">,</span> <span class="s2">&quot;ApplicationController&quot;</span><span class="p">,</span> <span class="s2">&quot;Core&quot;</span><span class="p">,</span> <span class="s2">&quot;Divider&quot;</span><span class="p">,</span> <span class="s2">&quot;Documents&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DocumentsController&quot;</span><span class="p">,</span> <span class="s2">&quot;Editor&quot;</span><span class="p">,</span> <span class="s2">&quot;EditorController&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;FitToTargetBoundsLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;Main&quot;</span><span class="p">,</span> <span class="s2">&quot;Roller&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerCollection&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RollerLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerModel&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerPanel&quot;</span><span class="p">,</span> <span class="s2">&quot;Scaffold&quot;</span><span class="p">,</span> <span class="s2">&quot;Toolbar&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Welcome&quot;</span>
+    <span class="p">],</span> <span class="nx">loadDocs</span><span class="p">,</span> <span class="nx">loadDoc</span><span class="p">,</span> <span class="nx">root</span> <span class="o">=</span> <span class="s2">&quot;source/views/Main/&quot;</span> <span class="o">+</span>
+        <span class="s2">&quot;Documents/docs/%..html&quot;</span><span class="p">,</span> <span class="p">;</span>
+    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Mvc.DocumentsController</code> kind</h2>
+
+<p>This is an <code>enyo.ArrayController</code> - a class designed
+to act like an <em>array</em> but with the added benefit of
+allowing bindings and observers. And because it is
+a kind of <code>enyo.Controller</code> it can have multiple event
+targets which makes it perfect for how we're implementing
+it here. A singleton instance of this class is implemented
+in <code>Core.js</code> and that instance is shared between the
+<code>Documents.js</code> <em>view</em> and the <code>Divider.js</code> <em>view</em>. Neither
+<em>view</em> is aware of the other but <code>Dividerj.js</code> dispatches
+its events to this <em>controller</em> and when the <code>selected</code>
+property changes the <code>Documents.js</code> <em>view</em> responds.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
         <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.DocumentsController&quot;</span><span class="p">,</span>
         <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.ArrayController&quot;</span><span class="p">,</span>
+        <span class="nx">handlers</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">onSelect</span><span class="o">:</span> <span class="s2">&quot;selectSource&quot;</span><span class="p">,</span>
+            <span class="nx">ontap</span><span class="o">:</span> <span class="s2">&quot;selectSource&quot;</span>
+        <span class="p">},</span>
         <span class="kr">public</span><span class="o">:</span> <span class="p">{</span>
             <span class="nx">selected</span><span class="o">:</span> <span class="mi">0</span>
         <span class="p">},</span>
         <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
             <span class="nx">loadDocs</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-        <span class="p">},</span>
-        <span class="nx">loadedDoc</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">src</span><span class="o">:</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">index</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span><span class="p">});</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;selected&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="p">},</span>
-        <span class="nx">selectSource</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;selectSource&quot;</span><span class="p">,</span> <span class="nx">sender</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;selected&quot;</span><span class="p">,</span> <span class="nx">sender</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+        <span class="p">},</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Once a document/pagelet is loaded via ajax we create
+an entry for it. If it is the <em>Welcome</em> pagelet then
+we go ahead and select that one. Because these are
+asynchronous we don't know what the index will be.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">loadedDoc</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">idx</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">src</span><span class="o">:</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="nx">content</span><span class="p">})</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;Welcome&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;selected&quot;</span><span class="p">,</span> <span class="nx">idx</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">},</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We mapped the <em>onSelect</em> and <em>ontap</em> events to this handler, 
+and then attempt to find a matching entry in our known
+document/pagelets. We manage this through the use of
+the <code>enyo.ArrayController.find</code> method.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">selectSource</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">target</span><span class="p">,</span> <span class="nx">found</span><span class="p">;</span>
+            <span class="nx">content</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">content</span> <span class="o">||</span> <span class="nx">event</span><span class="p">.</span><span class="nx">originator</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+            <span class="nx">content</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\.js/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.html&quot;</span><span class="p">;</span>
+            <span class="nx">found</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">val</span><span class="p">.</span><span class="nx">src</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="p">});</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">found</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">found</span><span class="p">.</span><span class="nx">index</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;selected&quot;</span><span class="p">,</span> <span class="nx">found</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">});</span>
-    
-    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Eventually general support for something like this may be
-added but for now we're just loading these adhoc to make
-their content available to our views</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">loadDocs</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Simply iterates over the known pagelet files we're trying
+to load via ajax and call the loader method.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">loadDocs</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">loaded</span> <span class="o">=</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">loadedDoc</span><span class="p">);</span>
         <span class="nx">enyo</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">documents</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
            <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="nx">doc</span><span class="p">);</span>
            <span class="nx">loadDoc</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="nx">loaded</span><span class="p">);</span>
         <span class="p">});</span>
     <span class="p">};</span>
-    
-    <span class="nx">loadDoc</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="nx">loaded</span><span class="p">)</span> <span class="p">{</span>
+    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>This method issues an ajax request using <code>enyo.Ajax</code> and
+sets the responder to the one provided in the <em>loaded</em>
+parameter.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">loadDoc</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="nx">loaded</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">({</span><span class="nx">url</span><span class="o">:</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">handleAs</span><span class="o">:</span> <span class="s2">&quot;text&quot;</span><span class="p">});</span>
         <span class="nx">xhr</span><span class="p">.</span><span class="nx">response</span><span class="p">(</span><span class="nx">loaded</span><span class="p">).</span><span class="nx">go</span><span class="p">();</span>
     <span class="p">};</span>

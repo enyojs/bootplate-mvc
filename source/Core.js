@@ -33,7 +33,8 @@
             // We know the kind to create it from, `Mvc.ApplicationController`.
             kind: "Mvc.ApplicationController"
         });
-        
+        // Here we create a singleton instance of another controller that is
+        // shared between the `Mvc.Documents` _view_ and the `Mvc.Editor` _view_.
         enyo.singleton({
             name: "Mvc.documents",
             kind: "Mvc.DocumentsController"

@@ -56,7 +56,7 @@ section {
             // the group
             .comments {
                 display: table-cell;
-                min-width: 320px;
+                min-width: 260px;
                 max-width: 380px;
                 width: 50%;
                 
@@ -83,6 +83,48 @@ section {
         }
     }
 }
+
+
+
+// lets try a media query to see if we can make the documentation a little
+// bit (keywords, little and bit) more readable
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    section {
+        &.file {
+            display: block;
+            
+            section {
+                &.group {
+                    display: inline-block;
+                
+                    .comment, .source, pre {
+                        display: block;
+                        word-wrap: break-word;
+                        white-space: pre-line;
+                    }
+                    pre {
+                        font-size: 9px;
+                    }
+                }
+            }
+        }
+        
+        &.file header {
+            .title, .path {
+                word-wrap: break-word;
+                white-space: pre-line;
+            }
+            .title {
+                font-size: 18px;
+            }
+            .path {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+
 
 // here are the classes for the various syntax-highlights
 // that we are interested in

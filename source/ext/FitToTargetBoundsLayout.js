@@ -22,6 +22,11 @@
             if (this.targetPath && "string" !== typeof this.targetPath) {
                 this._target = this.targetPath;
             }
+            // We want to register a listener for changes of the
+            // `showing` state of our container. In cases where
+            // sizes might have ocurred but we weren't visible
+            // we will not be triggered to reflow.
+            container.addObserver("showing", this.reflow, this);
         },
         // Here is where that `enyo.getPath` magic occurs.
         reflow: function () {

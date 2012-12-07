@@ -23,9 +23,8 @@ singleton. This means that anywhere from within the application
 any string-path or hard-reference to <code>Mvc.controller</code> it will
 be resolved to this object.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">enyo</span><span class="p">.</span><span class="nx">singleton</span><span class="p">({</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>The name of the global/application-scoped singleton is lower-case
 because it is a instance.</p>       </section>       <section class="source">         <div class="highlight"><pre>            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.controller&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We know the kind to create it from, <code>Mvc.ApplicationController</code>.</p>       </section>       <section class="source">         <div class="highlight"><pre>            <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Mvc.ApplicationController&quot;</span>
-        <span class="p">});</span>
-        
-        <span class="nx">enyo</span><span class="p">.</span><span class="nx">singleton</span><span class="p">({</span>
+        <span class="p">});</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Here we create a singleton instance of another controller that is
+shared between the <code>Mvc.Documents</code> <em>view</em> and the <code>Mvc.Editor</code> <em>view</em>.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">enyo</span><span class="p">.</span><span class="nx">singleton</span><span class="p">({</span>
             <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.documents&quot;</span><span class="p">,</span>
             <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Mvc.DocumentsController&quot;</span>
         <span class="p">});</span>

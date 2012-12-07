@@ -2,8 +2,9 @@
   
     // The `Mvc.EditorController` kind
     // -------------------------------
-    // ## Extending `enyo.ModelController`
-    //
+    // The editor controller is responsible for setup of the content in
+    // the `Mvc.Editor` _view_. It extends `enyo.ModelController` and proxies
+    // the selected record 
     enyo.kind({
         // There is a convention (not required) naming scheme to keep presentation
         // objects closely linked with their _controller_ layer counterparts by
@@ -16,12 +17,16 @@
         // entirety of the view that owns us via the `owner` property.
         handlers: {
             oninput: "input",
+            onready: "indexChanged"
+        },
+        constructor: function () {
+           this.inherited(arguments);
+           Mvc.controller.addDispatchTarget(this);
         },
         // So we map the selected index from the application controller to
-        // our own `index` property as well as the current `length`.
+        // our own `index` property.
         bindings: [
-            {from: "Mvc.controller.index", to: "index"},
-            {from: "Mvc.controller.length", to: "length"}
+            {from: "Mvc.controller.index", to: "index"}
         ],
         // Note that we can setup a _changed_ event watcher for a property
         // that only exists locally through bindings!

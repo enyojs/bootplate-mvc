@@ -1,11 +1,19 @@
  <!-- generated from template for rollercollection.js -->      <section class="file">   <header>     <span class="title">RollerCollection.js</span>     <span class="path">source/models/Collections/RollerCollection.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Mvc.RollerCollection</code> class</h2>
+  </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Mvc.RollerCollection</code> kind</h2>
 
-<h2>Extends <code>enyo.Collection</code></h2>
-
-<p>Really nothing special, simply subclasses <code>enyo.Collection</code>
-and provides the default (and required) <code>enyo.Model</code>
-identifier.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+<p>It is helpful to abstract your application objects
+if for no other reason than clarity. In this case
+we have no special properties on our <em>collection</em>
+definition except for the <code>model</code> property that must
+be set. If you are <em>absolutely certain</em> you will not
+extend the class and prefer <strong>not</strong> to create an entry
+for the <em>collection</em> kind, you're in luck. If you don't
+specify a <em>collection</em> kind in other kind definitions
+they will automatically use <code>enyo.Collection</code> generically.
+This means, though, that if you want to use a specific
+<em>model</em> kind with that collection you must instead
+provide that property (<code>model</code>) on the kind so it can
+be found during initialization.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
         <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.RollerCollection&quot;</span><span class="p">,</span>
         <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Collection&quot;</span><span class="p">,</span>
         <span class="nx">model</span><span class="o">:</span> <span class="s2">&quot;Mvc.RollerModel&quot;</span>
