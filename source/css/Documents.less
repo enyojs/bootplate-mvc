@@ -1,0 +1,17 @@
+@import "foss/elements.less";
+
+// The CSS for the documents child of the Mvc.Main kind
+#documents {
+    padding: 30px;
+    z-index: 2;
+    position: relative;
+    .drop-shadow(0, 2px, 5px, 0.4);
+}
+
+// provide a slightly altered experience for mobile and
+// smaller devices...
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    #documents {
+        padding: 10px;
+    }
+}

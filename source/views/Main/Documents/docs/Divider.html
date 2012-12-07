@@ -1,0 +1,43 @@
+ <!-- generated from template for divider.js -->      <section class="file">   <header>     <span class="title">Divider.js</span>     <span class="path">source/views/Main/Divider.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Mvc.Divider</code> kind</h2>
+
+<p>This is designed to allow a selection of the
+available annotated source files from a drop-down
+menu. Selecting one of the options propagates the
+<em>onSelect</em> event as is defined by <code>onyx.MenuItem</code>.
+Because we set the <code>controller</code> to <code>Mvc.documents</code>
+this event is dispatched and handled there (since
+we don't handle it locally). The same is true of
+the <em>Welcome</em> button.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.Divider&quot;</span><span class="p">,</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;divider&quot;</span><span class="p">,</span>
+        <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.MoreToolbar&quot;</span><span class="p">,</span>
+        <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;Mvc.documents&quot;</span><span class="p">,</span>
+        <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.Button&quot;</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Welcome&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.MenuDecorator&quot;</span><span class="p">,</span> <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Annotated Source&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;onyx.Menu&quot;</span><span class="p">,</span> <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Core.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;ApplicationController.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;DocumentsController.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;EditorController.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;FitToTargetBoundsLayout.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;RollerLayout.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;RollerCollection.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;RollerModel.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Scaffold.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;App.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Editor.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Toolbar.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Divider.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Main.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Documents.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Roller.js&quot;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;RollerPanel.js&quot;</span><span class="p">}]}]}</span>
+        <span class="p">]</span>
+    <span class="p">});</span>
+  
+<span class="p">}());</span>
+
+</pre></div>       </section>     </section>    </section>

@@ -2,6 +2,7 @@ enyo.depends(
 	"$lib/layout",
 	"$lib/onyx",
 	"$lib/mvc",
+	"../assets/docco/docco.less",
 	"css",
 	"ext",
 	"models",
