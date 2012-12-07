@@ -1,0 +1,33 @@
+ <!-- generated from template for rollerlayout.js -->      <section class="file">   <header>     <span class="title">RollerLayout.js</span>     <span class="path">source/ext/RollerLayout.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Mvc.RollerLayout</code> kind</h2>
+
+<p>A special layout handler for the <code>Mvc.Roller</code> kind that
+<em>should</em> only make adjustments in a mobile environment when
+the space is far more limited or an orientation change
+cuts our vertical display space.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+      <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.RollerLayout&quot;</span><span class="p">,</span>
+      <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Layout&quot;</span><span class="p">,</span>
+      <span class="nx">flow</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">reflow</span><span class="p">();</span>  
+      <span class="p">},</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>While this is by no means a complete or bullet-proof
+solution it should broadly detect a mobile-ish environment
+and reduce the amount of calculation in non-mobile
+environments.</p>       </section>       <section class="source">         <div class="highlight"><pre>      <span class="nx">reflow</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">enyo</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">gesture</span> <span class="o">||</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">touch</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">this</span><span class="p">.</span><span class="nx">adjustBounds</span><span class="p">();</span>
+          <span class="p">}</span>
+      <span class="p">},</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>So we need to adjust to find if our desired height is greater
+than the available height of the window minus the height of the
+toolbar. Obviously this layout is designed specifically for this
+<em>view</em> and this application.</p>       </section>       <section class="source">         <div class="highlight"><pre>      <span class="nx">adjustBounds</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">application</span><span class="p">.</span><span class="nx">rootView</span><span class="p">,</span> <span class="nx">toolbar</span> <span class="o">=</span> <span class="nx">root</span><span class="p">.</span><span class="nx">$</span><span class="p">.</span><span class="nx">toolbar</span><span class="p">,</span>
+              <span class="nx">frame</span> <span class="o">=</span> <span class="nx">root</span><span class="p">.</span><span class="nx">getBounds</span><span class="p">().</span><span class="nx">height</span> <span class="o">-</span> <span class="nx">toolbar</span><span class="p">.</span><span class="nx">getBounds</span><span class="p">().</span><span class="nx">height</span><span class="p">,</span>
+              <span class="nx">max</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">maxHeight</span><span class="p">,</span> <span class="nx">calc</span> <span class="o">=</span> <span class="nx">max</span> <span class="o">&lt;</span> <span class="nx">frame</span><span class="o">?</span> <span class="nx">max</span><span class="o">:</span> <span class="nx">frame</span><span class="p">,</span>
+              <span class="nx">curr</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">getBounds</span><span class="p">().</span><span class="nx">height</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">curr</span> <span class="o">!==</span> <span class="nx">calc</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">setBounds</span><span class="p">({</span><span class="nx">height</span><span class="o">:</span> <span class="nx">calc</span><span class="p">},</span> <span class="s2">&quot;px&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  
+<span class="p">}());</span>
+
+</pre></div>       </section>     </section>    </section>

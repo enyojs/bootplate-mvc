@@ -1,0 +1,42 @@
+ <!-- generated from template for main.js -->      <section class="file">   <header>     <span class="title">Main.js</span>     <span class="path">source/views/Main/Main.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <em>main</em> view</h2>
+
+<p>The <em>main</em> presentation portion of the application. We
+Capture the rest of the content for the app in a vertical
+scroller. The presentation is then broken down further into
+conveniently named parts. It isn't always necessary to do break
+every view into its own kind but for any section that has
+specific behavior or needs to encapsulate behavior beneath it
+by providing scope-relevant bindings to its children - is a
+pretty good indicator you might benefit from breaking it out.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Notice we use our application namespace for this <em>kind</em>.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.Main&quot;</span><span class="p">,</span>
+        <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Scroller&quot;</span><span class="p">,</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
+        <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
+        <span class="nx">fit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Bindings can be used for many things and they provide a means
+to convert datatypes differently on each end if desired (<em>transform</em>)
+but sometimes you can make it work without the <em>transform</em> simply
+by binding the appropriate type. Here we bound a state property of
+the application controller (a boolean) to the <code>showing</code> property of
+one of our child views. Now, without any additional logic, the <em>editor</em>
+child will only show when <code>isEditing</code> is set to true.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Also note how only 2 properties are defined, there are many options
+and ways to build <code>enyo.Bindings</code> but the <em>bindings array</em> is one of
+the most convenient. <code>enyo.Bindings</code> are <em>oneWay</em> by default. We will
+see an example of a <em>two way</em> binding in another component.</p>       </section>       <section class="source">         <div class="highlight"><pre>            <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;Mvc.controller.isEditing&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;$.editor.showing&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">handlers</span><span class="o">:</span> <span class="p">{</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Ugly hack for a chrome related bug.</p>       </section>       <section class="source">         <div class="highlight"><pre>            <span class="nx">oninput</span><span class="o">:</span> <span class="s2">&quot;chromeworkaround&quot;</span>
+        <span class="p">},</span>
+        <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;roller&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Mvc.Roller&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;editor&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Mvc.Editor&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;divider&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Mvc.Divider&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;documents&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Mvc.Documents&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;footer&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;footer&quot;</span><span class="p">,</span> <span class="nx">tag</span><span class="o">:</span> <span class="s2">&quot;footer&quot;</span><span class="p">}</span>
+        <span class="p">],</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>This is an ugly hack for forcing Chrome to re-render sub-layers
+with pseudo transparent layers above them.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">chromeworkaround</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">enyo</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">chrome</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">.</span><span class="nx">roller</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+<span class="p">}());</span>
+
+</pre></div>       </section>     </section>    </section>

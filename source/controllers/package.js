@@ -1,3 +1,5 @@
 enyo.depends(
-  "Carousel.js"
+    "ApplicationController.js",
+    "EditorController.js",
+    "DocumentsController.js"
 );

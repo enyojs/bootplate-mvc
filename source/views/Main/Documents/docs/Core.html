@@ -1,0 +1,57 @@
+ <!-- generated from template for core.js -->      <section class="file">   <header>     <span class="title">Core.js</span>     <span class="path">source/Core.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>main</code> function</h2>
+
+<p>The idea behind the <code>main</code> function is similar to many other languages.
+Think of this as the <code>main</code> starting place for the application -
+all of the source that should be loaded has been (so all classes are
+are available in the namespaces they should be) but the application
+has not been executed. Use this method to effectively setup any global
+objects that need to be instanced (say, for bindings in views) or other
+programatic logic to perhaps load additional libraries if needed. You
+can do anything in <code>main</code> really but ideally we setup application-scoped
+objects/singletons - so that's what we've done in this app.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nb">window</span><span class="p">.</span><span class="nx">main</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>For this example application, <code>MVC</code> (or namespace <code>Mvc</code>), we
+are sharing a single collection of models throughout the app.
+This is both awesome and can be tricky depending on what you
+need to do with those models or the collection as a whole. In
+our case, though, its pretty straight-forward. We have a
+<code>enyo.Collection</code> of models and some additional functionality
+that is application specific.</p>
+
+<p>So you can take a look at the source for the <code>Mvc.CollectionController</code>
+class, and right here we go ahead and instance it as a global
+singleton. This means that anywhere from within the application
+any string-path or hard-reference to <code>Mvc.controller</code> it will
+be resolved to this object.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">enyo</span><span class="p">.</span><span class="nx">singleton</span><span class="p">({</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>The name of the global/application-scoped singleton is lower-case
+because it is a instance.</p>       </section>       <section class="source">         <div class="highlight"><pre>            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.controller&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We know the kind to create it from, <code>Mvc.ApplicationController</code>.</p>       </section>       <section class="source">         <div class="highlight"><pre>            <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Mvc.ApplicationController&quot;</span>
+        <span class="p">});</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Here we create a singleton instance of another controller that is
+shared between the <code>Mvc.Documents</code> <em>view</em> and the <code>Mvc.Editor</code> <em>view</em>.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">enyo</span><span class="p">.</span><span class="nx">singleton</span><span class="p">({</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mvc.documents&quot;</span><span class="p">,</span>
+            <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Mvc.DocumentsController&quot;</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>enyo.run</code> method</h2>
+
+<p>Here is an example of the <code>enyo.run</code> method that allows us
+to queue a function to be run <em>after the <code>main</code> function and
+the <code>enyo.Application</code> startup methods have been run</em>. It is
+<em>important to note the timing of execution of this method to
+understand how to effectively use it</em>. Here we wanted to be able
+to automatically add some <em>scaffolded models</em> (prepared models
+from <code>Scaffold.js</code>) so we actually start with some data. Since the
+<code>enyo.Application</code> has already been started that means that
+controllers and views are already setup and listening for events.
+Issuing these additions to the collection should trigger some
+updates, it turns out, for this initial batch we don't want that.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Lets add the <em>scaffolded models</em> using the proxied <code>add</code>
+method of our application controller. Note that we pass
+an additional pararmeter of <code>silent: true</code> because we actually
+do not want the event to fire notifying the view because the
+default listener for the addition of models tries to take
+us into the <code>isEditing</code> state. Instead, we supress the events
+and arbitrarily issue an event from the controller because
+the view (the <code>enyo.Panels</code>) is a listener from the controller.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">Mvc</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">Mvc</span><span class="p">.</span><span class="nx">Scaffold</span><span class="p">.</span><span class="nx">Roller</span><span class="p">,</span> <span class="p">{</span><span class="nx">silent</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Now we tell the Roller that we're ready by bubbling the event
+it is waiting for from the application controller.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">Mvc</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">bubble</span><span class="p">(</span><span class="s2">&quot;onready&quot;</span><span class="p">,</span> <span class="p">{});</span>
+    <span class="p">});</span>
+  
+<span class="p">}());</span>
+
+</pre></div>       </section>     </section>    </section>
