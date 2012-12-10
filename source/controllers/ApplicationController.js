@@ -9,7 +9,7 @@
         // We name it as a class in the application namespace.
         name: "Mvc.ApplicationController",
         // We subclass the `enyo.CollectionController` class because
-        // we know we need the collection-control built-in methods.
+        // we know we need the collection-controller built-in methods.
         // Just note that even though it is a `enyo.CollectionController`
         // we can add additional functionality to it because it is
         // ultimately just another `enyo.Controller` with additional
@@ -18,17 +18,17 @@
         // In this application we already know what the collection kind
         // is going to be for this controller, there is no global instance
         // of the collection that is shared, we are going to hand this
-        // controller a class referenc and it will instantiate it when it
+        // controller a class reference and it will instantiate it when it
         // is created
         collection: "Mvc.RollerCollection",
         // While in `Enyo.js 2.2+` it is not required to create the
         // `published` hash so that the corresponding getters/setters
         // are created - it is still considered good practice if
-        // for no other reason that clarity and consistency. But it should
+        // for no other reason than clarity and consistency. But it should
         // be noted that calling `get` or `set` on any `enyo.Object` or
         // subclass gives you the equivalent to _any property on the object_,
         // can resolve paths, handle `enyo.Computed` properties and more.
-        // More on that another time, for now, we publish any publically
+        // More on that another time, for now, we publish any publicly
         // accessible properties.
         published: {
             // The entire application has state, one of these states
@@ -47,7 +47,7 @@
             // This value is actually bound to the `enyo.View` that implements
             // the `enyo.Panels` that coordinate the presentation of these
             // models in the `enyo.Collection`. The binding to this property
-            // is actually intiated in the view, though.
+            // is actually initiated in the view, though.
             index: 0,
             // The timer reference as returned by `setInterval`.
             timer: null,
@@ -71,7 +71,7 @@
             this.set("isEditing", true);
         },
         // When the `add` button is tapped, we add a new model to the collection
-        // we the default properties as defined in the `enyo.Model` class.
+        // with the default properties as defined in the `enyo.Model` class.
         addModel: function () {
             // Here we call the `add` method that is proxying the underlying
             // collection API. By passing the empy hash, it knows to create the
@@ -83,8 +83,7 @@
         nextModel: function () {
           // We want to freeze the current timer-driven operation/animation.
           this.stop();
-          // We call our `next` method to arbitrarily select the next index
-          // appropriately.
+          // We call our `next` method to select the next index appropriately.
           this.next();
           // Now we restart the timer operation to ensure the animation will
           // continue.
@@ -120,12 +119,12 @@
             // property that is part of a _two-way_ `enyo.Binding`.
             var idx = this.get("index"), len = this.get("length");
             // If the next value for index goes beyond the number
-            // of available panels we know about reset it to _0_
+            // of available panels, reset it to _0_
             // so we can start over.
             if (idx+1 === len) {
               this.set("index", 0);
             } else {
-              // Otherwise lets increment the index and move forward.
+              // Otherwise let's increment the index and move forward.
               this.set("index", ++idx);
             }
         },
@@ -143,10 +142,10 @@
         // Here we listen and respond to the _length change_ notification
         // so we can automatically begin animating when appropriate.
         lengthChanged: function () {
-            // If the length is greater than a single panel lets
+            // If the length is greater than a single panel let's
             // go ahead and start 'er up.
             if (this.length > 1) this.start();
-            // If the length has fallen to 1 (or lower?) lets
+            // If the length has fallen to 1 (or lower?) let's
             // stop animating.
             if (this.length <= 1) this.stop();
         }
