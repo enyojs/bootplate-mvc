@@ -4,49 +4,52 @@
     // ----------------------
     // The editor is a _view_ that is only visible when the application
     // state property (on `Mvc.controller`) is set to true. This is only
-    // set to true when the `edit` button is selected. Using some CSS
-    // (using Less!) we can create the effect of an overlay. With proper
-    // bindings, we can setup a text-editor with the modifiable content
-    // of the underlying model, and proper bindings to other views allows
-    // real-time updates without any additional work.
+    // the case when the `edit` button is selected. By applying some CSS
+    // (using LESS) we can create the effect of an overlay.  With the
+    // proper bindings, we can set up a text editor with hooks into the
+    // modifiable content of the underlying model; proper bindings to
+    // other views can give us real-time UI updates with no additional work.
     enyo.kind({
         name: "Mvc.Editor",
         id: "editor",
-        // We use a custom controller _kind_. This controller is refered to
-        // as a _view controller_ as it is _owned_ by this _view_ and has
-        // awareness of it. By setting the `controller` property to a _class_
-        // instead of an instance, the `enyo.View` (also `enyo.Control`)
-        // automatically created an instance of the controller. All events from
-        // the _view_ are propagated to the _controller_ where it can have its
-        // own named event handlers, listeners, etc. If it returns true for any
-        // handlers propagation (bubbling) ends as expected, if not the event
-        // is routed right back up through the _view_. This allows us to take
-        // non-view related logic and supplant it on a separate class that has
-        // additional functionality.
+        // We use a custom controller kind, which we call a "view controller"
+        // because it is owned by this view and has awareness of it. Because
+        // we set the `controller` property to a _class_ instead of an
+        // instance, the view automatically creates an instance of the
+        // controller.
+        //
+        // All events from the view are propagated to the controller, which
+        // may have its own named event handlers, listeners, etc. If any
+        // handler returns true, event propagation (bubbling) ends as
+        // expected; if not, the event is routed right back up through the
+        // view. This allows us to take non-view-related logic and graft it
+        // onto a separate class that has additional functionality.
         controller: "Mvc.EditorController",
-        // We are able to create relative-pathed bindings for both the `from`
-        // and `to` properties. One thing to note is that the controller is
-        // a subclass of `enyo.ModelController` - this allows us to bind directly
-        // to properties of the _controller_ as if it were the model itself.
-        // It also means that we could make changes to the model directly or
-        // swap it out altogether and those properties/changes would automatically
-        // propagate back to the _view_ because of bindings. Notice the
-        // explicit selection of target (_to_) properties. Fort he _label_ child
-        // use content but for the _input_ child we selected the `value` property.
+        // We are able to create bindings with relative paths for both the
+        // `from` and `to` properties. One thing to note is that the
+        // controller is subclassed from `enyo.ModelController`--this allows
+        // us to bind directly to properties of the controller as if it were
+        // the model itself. It also means that we could make changes to the
+        // model directly (or swap it out altogether) and those changes would
+        // automatically propagate back to the view because of bindings.
+        // Notice the explicit selection of target (`to`) properties. For the
+        // `label` child we bind to the `content` property, but for the
+        // `input` child we bind to `value`.
         bindings: [
             {from: "controller.header", to: "$.label.content"},
             {from: "controller.header", to: "$.input.value"}
         ],
-        // We use a custom _layout_ kind that can be found in the `ext` directory
+        // We use a custom layout kind that can be found in the `ext` directory
         // in the project source.
         layoutKind: "Mvc.FitToTargetBoundsLayout",
-        // The _layout_ looks for this property when detecting what _view_ we
-        // wish to match the bounds for. This is only necessary due to limitations
-        // in the way the CSS is applied - this editor becomes visible over the
-        // _roller_, but the _roller_'s opacity changes. In order to keep our
-        // opacity unaffected we have a different parent but to match sizes we
-        // need to have a reference to the target. From this path the _layout_ will
-        // find it and set our bounds accordingly.
+        // The layout looks for the `fitTarget` property when detecting the
+        // view for which we want to match the bounds. This is only necessary
+        // due to limitations in the way the CSS is applied--this editor
+        // becomes visible over the roller, but the roller's opacity changes.
+        // In order to keep our opacity unaffected, we have a different parent,
+        // but to match sizes we need to have a reference to the target view.
+        // From the value of `fitTarget`, the layout finds the target and sets
+        // our bounds accordingly.
         fitTarget: "owner.$.roller",
         components: [
             {name: "info1", classes: "input-label", content: "There is a model " +
