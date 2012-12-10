@@ -47,8 +47,8 @@
                 this.set("selected", idx);
             }
         },
-        // We mapped the _onSelect_ and _ontap_ events to this handler, 
-        // and then attempt to find a matching entry in our known
+        // We mapped the _onSelect_ and _ontap_ events to this handler. When
+        // fired we attempt to find a matching entry in our known
         // document/pagelets. We manage this through the use of
         // the `enyo.ArrayController.find` method.
         selectSource: function (sender, event) {
@@ -65,7 +65,7 @@
     });
     
     // Simply iterates over the known pagelet files we're trying
-    // to load via ajax and call the loader method.
+    // to load via ajax and calls the loader method.
     loadDocs = function (target) {
         var loaded = enyo.bind(target, target.loadedDoc);
         enyo.forEach(documents, function (doc) {
