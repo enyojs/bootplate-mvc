@@ -4,9 +4,9 @@
     // -------------------------------
     // The editor controller is responsible for setup of the content in
     // the `Mvc.Editor` _view_. It extends `enyo.ModelController` and proxies
-    // the selected record 
+    // the selected record.
     enyo.kind({
-        // There is a convention (not required) naming scheme to keep presentation
+        // There is a naming convention (not required) to keep presentation
         // objects closely linked with their _controller_ layer counterparts by
         // appending `Controller` to the end of the controller title.
         name: "Mvc.EditorController",
@@ -35,7 +35,7 @@
             if (model && model !== this.model) this.set("model", model);
         },
         input: function () {
-            // very, very important - let changes in the model propagate
+            // Very, very important - let changes in the model propagate
             // to changes in the view, obviously we interpreted a UI layer
             // event for `oninput` but we translate the event into a model
             // layer change and it will automatically cause the rest of the
