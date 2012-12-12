@@ -1,6 +1,6 @@
 (function () {
   
-    // The `Mvc.RollerPanel` class
+    // The `Mvc.RollerPanel` kind
     // ---------------------------
     // Each time a new record is added to the collection at runtime
     // a new panel in our _roller_ is created and it is based off

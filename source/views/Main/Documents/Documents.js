@@ -2,7 +2,7 @@
 
     // The `Mvc.Documents` kind
     // ------------------------
-    // This is a special container class that works in tandem
+    // This is a special container kind that works in tandem
     // with its controller. The controller (`Mvc.DocumentsController`)
     // is responsible for asynchronously loading static html
     // _pagelets_. This particular view is agnostic to what

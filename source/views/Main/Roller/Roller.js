@@ -1,6 +1,6 @@
 (function () {
   
-    // The `Mvc.Roller` class
+    // The `Mvc.Roller` kind
     // ----------------------
     // This is a modified `enyo.Panels` kind housed by a container
     // that dynamically creates _panels_ based on the models in a collection.
