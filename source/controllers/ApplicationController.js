@@ -49,12 +49,12 @@
             // models in the `enyo.Collection`. The binding to this property
             // is actually initiated in the view, though.
             index: 0,
-            // The timer reference as returned by `setInterval`.
-            timer: null,
             // Simple boolean to keep track of whether or not the animation
             // is running (_is started_).
             isStarted: false
         },
+        // The timer reference as returned by `setInterval`.
+        timer: null,
         // We listen for one special event to trigger that we're ready
         // to start inspecting and listening on our property observers.
         handlers: {
