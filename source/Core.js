@@ -14,7 +14,7 @@
     // this app.
     window.main = function () {
       
-        // For this example application, `MVC` (or namespace `Mvc`), we
+        // For this example application, `MVC` (or namespace `App`), we
         // are sharing a single collection of models.
         // This is great but it can be tricky depending on what you
         // need to do with those models or the collection as a whole. In
@@ -22,23 +22,14 @@
         // `enyo.Collection` of models and some additional functionality
         // that is application specific.
         //
-        // Here we go ahead and instance `Mvc.CollectionController` as a global
+        // Here we go ahead and instance `App.CollectionController` as a global
         // singleton. This means that anywhere from within the application
-        // any string-path or hard-reference to `Mvc.controller` will
+        // any string-path or hard-reference to `App.panels` will
         // be resolved to this object.
-        enyo.singleton({
-            // The name of the global/application-scoped singleton is lower-case
-            // because it is a instance.
-            name: "Mvc.controller",
-            // We know the kind to create it from, `Mvc.ApplicationController`.
-            kind: "Mvc.ApplicationController"
-        });
+        App.panels = new App.PanelsController();
         // Here we create a singleton instance of another controller that is
-        // shared between the `Mvc.Documents` _view_ and the `Mvc.Editor` _view_.
-        enyo.singleton({
-            name: "Mvc.documents",
-            kind: "Mvc.DocumentsController"
-        });
+        // shared between the `App.Documents` _view_ and the `App.Editor` _view_.
+        App.documents = new App.DocumentsController();
     };
     
     // The `enyo.run` method
@@ -56,17 +47,17 @@
     // updates. It turns out for this initial batch we don't want that.
     enyo.run(function () {
         // Let's add the _scaffolded models_ using the proxied `add`
-        // method of our application controller. Note that we pass
+        // method of our panels controller. Note that we pass
         // an additional pararmeter of `silent: true` because we actually
         // do not want the event to fire notifying the view because the
         // default listener for the addition of models tries to take
         // us into the `isEditing` state. Instead, we supress the events
         // and arbitrarily issue an event from the controller because
         // the view (the `enyo.Panels`) is a listener from the controller.
-        Mvc.controller.add(Mvc.Scaffold.Roller, {silent: true});
+        App.panels.add(App.Scaffold.Roller, {silent: true});
         // Now we tell the Roller that we're ready by bubbling the event
-        // it is waiting for from the application controller.
-        Mvc.controller.bubble("onready", {});
+        // it is waiting for from the panels controller.
+        App.panels.bubble("onready", {});
     });
   
 }());

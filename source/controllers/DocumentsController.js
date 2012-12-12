@@ -1,16 +1,38 @@
 (function () {
+
+    // Locally scoped variable that contains the fixed names of each of
+    // the documentation files we're going to load via `enyo.Ajax` calls.
+    var documents = [ "App", "PanelsController", "Core", "Divider",
+        "Documents", "DocumentsController", "Editor", "EditorController",
+        "FitToTargetBoundsLayout", "Main", "Roller", "RollerCollection",
+        "RollerLayout", "RollerModel", "RollerPanel", "Scaffold",
+        "Toolbar", "Welcome"];
     
-    // Locally scoped variables to use during the loadup process.
-    var documents = [
-            "App", "ApplicationController", "Core", "Divider", "Documents",
-            "DocumentsController", "Editor", "EditorController",
-            "FitToTargetBoundsLayout", "Main", "Roller", "RollerCollection",
-            "RollerLayout", "RollerModel", "RollerPanel", "Scaffold", "Toolbar",
-            "Welcome"
-    ], loadDocs, loadDoc, root = "source/views/Main/" +
-        "Documents/docs/%..html";
+    // Locally scoped variable that is the known root of all file requests.
+    // It is used with `enyo.format` to format the appropriate string
+    // for the individual file's paths.
+    var root = "assets/docco/generated/%..html";
     
-    // The `Mvc.DocumentsController` kind
+    // Locally scoped method to load each of the known document sources.
+    // It simply iterates over the known pagelet files we're trying
+    // to load via ajax and calls the loader method.
+    var loadDocs = function (target) {
+        var loaded = enyo.bind(target, target.loadedDoc);
+        enyo.forEach(documents, function (doc) {
+           var src = enyo.format(root, doc);
+           loadDoc(src, loaded);
+        });
+    };
+        
+    // Locally scoped method that issues an ajax request using
+    // `enyo.Ajax` and sets the responder to the one provided in the 
+    // _loaded_ parameter.
+    var loadDoc = function (src, loaded) {
+        var xhr = new enyo.Ajax({url: src, handleAs: "text"});
+        xhr.response(loaded).go();
+    };
+    
+    // The `App.DocumentsController` kind
     // ----------------------------------
     // This is an `enyo.ArrayController` - a class designed
     // to act like an _array_ but with the added benefit of
@@ -24,7 +46,7 @@
     // its events to this _controller_ and when the `selected`
     // property changes the `Documents.js` _view_ responds.
     enyo.kind({
-        name: "Mvc.DocumentsController",
+        name: "App.DocumentsController",
         kind: "enyo.ArrayController",
         handlers: {
             onSelect: "selectSource",
@@ -52,7 +74,9 @@
         // document/pagelets. We manage this through the use of
         // the `enyo.ArrayController.find` method.
         selectSource: function (sender, event) {
-            var content, target, found;
+            var content;
+            var target;
+            var found;
             content = event.content || event.originator.content;
             content = content.replace(/\.js/, "") + ".html";
             found = this.find(function (val) {
@@ -63,23 +87,5 @@
             }
         }
     });
-    
-    // Simply iterates over the known pagelet files we're trying
-    // to load via ajax and calls the loader method.
-    loadDocs = function (target) {
-        var loaded = enyo.bind(target, target.loadedDoc);
-        enyo.forEach(documents, function (doc) {
-           var src = enyo.format(root, doc);
-           loadDoc(src, loaded);
-        });
-    };
-    
-    // This method issues an ajax request using `enyo.Ajax` and
-    // sets the responder to the one provided in the _loaded_
-    // parameter.
-    loadDoc = function (src, loaded) {
-        var xhr = new enyo.Ajax({url: src, handleAs: "text"});
-        xhr.response(loaded).go();
-    };
     
 }());
