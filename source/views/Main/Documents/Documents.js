@@ -15,9 +15,10 @@
         controller: "Mvc.documents",
         id: "documents",
         allowHtml: true,
-        // This is an internally used property that maps back to the
-        // controller's proxied model state of _selected_.
-        selected: false,
+        // This property maps back to the controller's currently
+        // selected model by reference and is implemented via the
+        // binding.
+        selected: null,
         // We only needed one binding to make this magic happen.
         bindings: [
             {from: "controller.selected", to: "selected"}
