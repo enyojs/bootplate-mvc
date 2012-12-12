@@ -19,7 +19,7 @@
             {kind: "onyx.Button", content: "Welcome"},
             {kind: "onyx.MenuDecorator", components: [
                 {content: "Annotated Source"},
-                {kind: "onyx.Menu", components: [
+                {kind: "onyx.Menu", maxHeight: 245, components: [
                     {content: "Core.js"},
                     {content: "ApplicationController.js"},
                     {content: "DocumentsController.js"},
