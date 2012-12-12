@@ -1,0 +1,24 @@
+ <!-- generated from template for rollercollection.js -->      <section class="file">   <header>     <span class="title">RollerCollection.js</span>     <span class="path">source/models/Collections/RollerCollection.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>App.RollerCollection</code> kind</h2>
+
+<p>It is helpful to abstract your application objects
+if for no other reason than clarity. In this case
+we have no special properties on our <em>collection</em>
+definition except for the <code>model</code> property that must
+be set. If you are <em>absolutely certain</em> you will not
+extend the class and prefer <strong>not</strong> to create an entry
+for the <em>collection</em> kind, you're in luck. If you don't
+specify a <em>collection</em> kind in other kind definitions
+they will automatically use <code>enyo.Collection</code> generically.
+This means, though, that if you want to use a specific
+<em>model</em> kind with that collection you must instead
+provide that property (<code>model</code>) on the kind so it can
+be found during initialization. A <code>enyo.Collection</code> is
+useless without knowing what the underlying <code>enyo.Model</code>
+type is and it will let you know if it cannot figure out
+what <em>model</em> kind to use.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;App.RollerCollection&quot;</span><span class="p">,</span>
+    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Collection&quot;</span><span class="p">,</span>
+    <span class="nx">model</span><span class="o">:</span> <span class="s2">&quot;App.RollerModel&quot;</span>
+<span class="p">});</span>
+
+</pre></div>       </section>     </section>    </section>

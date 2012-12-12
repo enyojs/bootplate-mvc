@@ -1,9 +1,9 @@
 #!/bin/bash
 
 docco -t assets/docco/pagelet.jst -c assets/docco/docco.less \
-    -o source/views/Main/Documents/docs \
+    -o assets/docco/generated \
     source/Core.js \
-    source/controllers/ApplicationController.js \
+    source/controllers/PanelsController.js \
     source/controllers/DocumentsController.js \
     source/controllers/EditorController.js \
     source/ext/FitToTargetBoundsLayout.js \

@@ -1,5 +1,5 @@
 enyo.depends(
-    "ApplicationController.js",
+    "PanelsController.js",
     "EditorController.js",
     "DocumentsController.js"
 );
