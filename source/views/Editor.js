@@ -1,10 +1,10 @@
 
 // The `App.Editor` kind
 // ----------------------
-// The editor is a _view_ that is only visible when the application
+// The editor is a view that is only visible when the application
 // state property (on `App.panels`) is set to true. This is only
-// the case when the `edit` button is selected. By applying some CSS
-// (using LESS) we can create the effect of an overlay.  With the
+// the case when the "Edit" button is selected. By applying some CSS
+// (using LESS) we can create the effect of an overlay. With the
 // proper bindings, we can set up a text editor with hooks into the
 // modifiable content of the underlying record; proper bindings to
 // other views can give us real-time UI updates with no additional work.
@@ -13,13 +13,12 @@ enyo.kind({
     id: "editor",
     // We use a custom controller kind, which we call a "view controller"
     // because it is owned by this view and has awareness of it. Because
-    // we set the `controller` property to a _kind_ instead of an
-    // _instance_, the view automatically creates an _instance_ of the
-    // controller.
+    // we set the `controller` property to a kind instead of an instance,
+    // the view automatically creates an instance of the controller.
     //
     // All events from the view are propagated to the controller, which
-    // may have its own named event handlers, listeners, etc. If any
-    // handler returns true, event propagation (bubbling) ends as
+    // may have its own named event handlers, listeners, and so on. If
+    // a handler returns true, event propagation (bubbling) ends as
     // expected; if not, the event is routed right back up through the
     // view. This allows us to take non-view-related logic and graft it
     // onto a separate kind that has additional functionality.
@@ -31,9 +30,9 @@ enyo.kind({
     // the model itself. It also means that we could make changes to the
     // model directly (or swap it out altogether) and those changes would
     // automatically propagate back to the view because of bindings.
-    // Notice the explicit selection of target (`to`) properties. For the
-    // `label` child we bind to the `content` property, but for the
-    // `input` child we bind to `value`.
+    // Notice the explicit selection of target (`to`) properties. We bind
+    // to the `content` property on the `label` child, but to the `value`
+    // property on the `input` child.
     bindings: [
         {from: "controller.header", to: "$.label.content"},
         {from: "controller.header", to: "$.input.value"}
@@ -47,8 +46,8 @@ enyo.kind({
     // becomes visible over the roller, but the roller's opacity changes.
     // In order to keep our opacity unaffected, we have a different parent,
     // but to match sizes we need to have a reference to the target view.
-    // From the value of `fitTarget`, the layout finds the target and sets
-    // our bounds accordingly.
+    // The layout finds the target in the value of `fitTarget`and sets our
+    // bounds accordingly.
     fitTarget: "owner.$.roller",
     components: [
         {name: "info1", classes: "input-label", content: "There is a model " +
