@@ -26,19 +26,10 @@
         // singleton. This means that anywhere from within the application
         // any string-path or hard-reference to `Mvc.controller` will
         // be resolved to this object.
-        enyo.singleton({
-            // The name of the global/application-scoped singleton is lower-case
-            // because it is a instance.
-            name: "Mvc.controller",
-            // We know the kind to create it from, `Mvc.ApplicationController`.
-            kind: "Mvc.ApplicationController"
-        });
+        Mvc.controller = new Mvc.ApplicationController();
         // Here we create a singleton instance of another controller that is
         // shared between the `Mvc.Documents` _view_ and the `Mvc.Editor` _view_.
-        enyo.singleton({
-            name: "Mvc.documents",
-            kind: "Mvc.DocumentsController"
-        });
+        Mvc.documents = new Mvc.DocumentsController();
     };
     
     // The `enyo.run` method
