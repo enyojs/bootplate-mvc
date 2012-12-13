@@ -1,31 +1,29 @@
 
 // The `App.Documents` kind
 // ------------------------
-// This is a special container kind that works in tandem
-// with its controller. The controller (`App.DocumentsController`)
-// is responsible for asynchronously loading static html
-// _pagelets_. This particular view is agnostic to what
-// pages actually exist or which is selected except for its
-// index. It is bound to the `selected` property of its
-// controller and when that value changes it retrieves the
-// _pagelet_ content and injects it into itself.
+// `App.Documents` is a special container kind that works in tandem
+// with its controller, `App.DocumentsController`.  The controller
+// is responsible for asynchronously loading static HTML "pagelets".
+// This particular view is agnostic as to what pages actually exist
+// or which one is selected (beyond knowing its index). It is bound
+// to the `selected` property of its controller; when that value
+// changes, `App.Documents` retrieves the pagelet content and injects 
+// it into itself.
 enyo.kind({
     name: "App.Documents",
     controller: "App.documents",
     id: "documents",
     allowHtml: true,
-    // This property maps back to the controller's currently
-    // selected model by reference and is implemented via the
-    // binding.
+    // The `selected` property maps back to the controller's currently
+    // selected model by reference and is implemented via the binding.
     selected: null,
-    // We only needed one binding to make this magic happen.
+    // We only need one binding to make this happen.
     bindings: [
         {from: "controller.selected", to: "selected"}
     ],
-    // Quite simple really. When the `selected` property is
-    // modified, check to make sure it exists and if it does
-    // display that content. The proper _css_ is already included
-    // for each _pagelet_. Doesn't get much easier.
+    // When the `selected` property is modified, check to make sure it
+    // exists; if it does, display that content. The proper CSS is
+    // already included for each pagelet.
     selectedChanged: function () {
         var doc = this.controller.at(this.selected);
         if (doc) {
