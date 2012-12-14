@@ -1,15 +1,15 @@
 
 // The `App.RollerModel` kind
 // --------------------------
-// While this subkind of `enyo.Model` doesn't do much
-// magic it is important to note a paricular convention
-// that can spare you many headaches. __While it is not
-// required to set a default value for a property you
-// intend to set on model-instances (records) it is
-// better if you do!__ Also note that when you create a
-// new record in the application by pressing the _Add_
-// button the initial message is the one found here
-// in the model defaults.
+// While this subkind of `enyo.Model` doesn't do a whole lot, it
+// serves to illustrate one very important point: It is highly
+// recommended (though not strictly mandatory) that you specify a
+// default value for each property you set on a model-instance
+// (record).
+//
+// Also note that when you create a new record at runtime (by
+// pressing the "Add" button), the initial message is the one
+// declared here in the model's `defaults` block.
 enyo.kind({
     name: "App.RollerModel",
     kind: "enyo.Model",
