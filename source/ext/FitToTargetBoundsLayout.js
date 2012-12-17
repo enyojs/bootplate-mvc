@@ -1,19 +1,18 @@
 
-// An interesting `enyo.Layout`, `App.FitToTargetBoundsLayout`
-// -----------------------------------------------------------
-// We needed to make sure that the editor would match the
-// current dimensions of another _view_ that was not directly
-// in its own tree. Using the logic behind `enyo.getPath` we
-// can easily abstract this desire to something that is
-// reuseable for other objects. On the _view_ implementing the
-// `App.FitToTargetBounds` _layoutKind_ simply have a property
-// `fitTarget` that can be a string path (relative to the _view_)
-// or a full path to an instance or an object reference.
+// `App.FitToTargetBoundsLayout`, an interesting layout kind
+// ---------------------------------------------------------
+// We need to make sure that the editor matches the current
+// dimensions of another view not directly in its own tree.
+// Using `enyo.getPath`, we can easily abstract this
+// functionality into something reuseable by other objects.
+// On the view implementing this layout kind, we specify a
+// value for the `fitTarget` property, which can be a string
+// path (relative to the view) or a full path to an instance
+// or an object reference.
 enyo.kind({
-    // The name seemed "fitting"...
     name: "App.FitToTargetBoundsLayout",
     kind: "enyo.Layout",
-    // Local copy of the property from the container.
+    // Local copy of the property from the container
     targetPath: "",
     constructor: function (container) {
         this.inherited(arguments);
@@ -21,26 +20,24 @@ enyo.kind({
         if (this.targetPath && "string" !== typeof this.targetPath) {
             this._target = this.targetPath;
         }
-        // We want to register a listener for changes of the
-        // `showing` state of our container. In cases where
-        // sizes might have ocurred but we weren't visible
-        // we will not be triggered to reflow.
+        // Register a listener for changes to the `showing` state
+        // of our container.  If resizing occurs while we're not
+        // visible, we won't be triggered to reflow.
         container.addObserver("showing", this.reflow, this);
     },
-    // Here is where that `enyo.getPath` magic occurs.
+    // This is where `enyo.getPath` comes in.
     reflow: function () {
-        // By default, `enyo.Layout` kinds do not inherit the
-        // `get` method but we can easily facade it by calling
-        // `enyo.getPath` with the context set as ourselves.
+        // By default, layout kinds do not inherit the `get` method,
+        // but we can instead call `enyo.getPath` with the context
+        // set as ourselves.
         var target = enyo.getPath.call(this, "target");
         this.container.setBounds(target.getBounds(), "px");
     },
-    // Here we use a computed property that ultimately caches
-    // its initial run. While not completely necessary it does
-    // organize the logic associated with the property to a
-    // single location rather than have it spread out with
-    // lots of additional tests attempting to detect if it has
-    // been initialized.
+    // This method computes the value of the `target` property,
+    // caching the results of its initial run. While not completely
+    // necessary, it lets us store the logic associated with the
+    // property in a single location, eliminating the need for extra
+    // tests to detect whether `target` has been initialized.
     target: enyo.Computed(function () {
         var target;
         if (this._target) return this._target;
