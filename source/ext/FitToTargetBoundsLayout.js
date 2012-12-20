@@ -1,5 +1,5 @@
 
-// `App.FitToTargetBoundsLayout`, an interesting layout kind
+// `Sample.FitToTargetBoundsLayout`, an interesting layout kind
 // ---------------------------------------------------------
 // We need to make sure that the editor matches the current
 // dimensions of another view not directly in its own tree.
@@ -10,7 +10,7 @@
 // path (relative to the view) or a full path to an instance
 // or an object reference.
 enyo.kind({
-    name: "App.FitToTargetBoundsLayout",
+    name: "Sample.FitToTargetBoundsLayout",
     kind: "enyo.Layout",
     // Local copy of the property from the container
     targetPath: "",

@@ -1,12 +1,12 @@
 
-// The `App.PanelsController` kind
+// The `Sample.PanelsController` kind
 // -------------------------------
 // This is the kind definition for the global singleton application
-// panels controller (`App.panels`) instantiated in the `main` function
+// panels controller (`Sample.panels`) instantiated in the `main` function
 // in `Core.js`.
 enyo.kind({
     // We give the kind a name in the application namespace.
-    name: "App.PanelsController",
+    name: "Sample.PanelsController",
     // We base this kind on `enyo.CollectionController` because we know
     // we need the collection controller's built-in methods. Even
     // though this is an `enyo.CollectionController`, we can add
@@ -18,14 +18,14 @@ enyo.kind({
     // global instance of the collection. We will hand this controller
     // a kind reference and it will instantiate the collection kind when
     // it is created.
-    collection: "App.RollerCollection",
+    collection: "Sample.RollerCollection",
     // While in Enyo 2.2+ it is not required to create the `published`
     // hash so that the corresponding getters and setters are created,
     // this is still considered to be a best practice.
     published: {
         // The entire application has state. One possible state is the
         // is the editing state. While the `isEditing` property is
-        // designed to be used directly with the `App.Roller` view kind,
+        // designed to be used directly with the `Sample.Roller` view kind,
         // any other component in the application may respond to it as
         // well (as we will see).
         isEditing: false,
@@ -50,11 +50,6 @@ enyo.kind({
     },
     // The timer reference as returned by `setInterval`
     timer: null,
-    // We listen for the special `ready` event to signal that we're ready
-    // to start inspecting and listening on our property observers.
-    handlers: {
-        onready: "collectionChanged"
-    },
     // The following methods are actually dispatch event targets of an
     // `enyo.View` (the toolbar). These methods are executed in response
     // to events bubbled from the view layer.

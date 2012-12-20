@@ -1,5 +1,5 @@
 
-// The `App.RollerCollection` kind
+// The `Sample.RollerCollection` kind
 // -------------------------------
 // It is helpful to abstract your application objects--for clarity's
 // sake, if nothing else. In this case, we have no special properties
@@ -17,7 +17,7 @@
 // doesn't know what the underlying `enyo.Model` type is, and it will
 // let you know if it cannot figure out which model kind to use.
 enyo.kind({
-    name: "App.RollerCollection",
+    name: "Sample.RollerCollection",
     kind: "enyo.Collection",
-    model: "App.RollerModel"
+    model: "Sample.RollerModel"
 });
