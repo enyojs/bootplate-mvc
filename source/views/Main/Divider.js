@@ -18,7 +18,7 @@ enyo.kind({
         {kind: "onyx.MenuDecorator", components: [
             {content: "Annotated Source"},
             {kind: "onyx.Menu", maxHeight: 245, components: [
-                {content: "Core.js"},
+                {content: "start.js"},
                 {content: "PanelsController.js"},
                 {content: "DocumentsController.js"},
                 {content: "EditorController.js"},
@@ -28,6 +28,7 @@ enyo.kind({
                 {content: "RollerModel.js"},
                 {content: "Scaffold.js"},
                 {content: "Sample.js"},
+                {content: "RootView.js"},
                 {content: "Editor.js"},
                 {content: "Toolbar.js"},
                 {content: "Divider.js"},

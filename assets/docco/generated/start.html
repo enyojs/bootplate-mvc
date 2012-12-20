@@ -1,0 +1,21 @@
+ <!-- generated from template for start.js -->      <section class="file">   <header>     <span class="title">start.js</span>     <span class="path">source/start.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>enyo.ready</code> method</h2>
+
+<p>Some things need to occur only after the <code>document</code> has fully
+initialized and is ready - thus ensuring the entirety of source
+has been loaded. You can call <code>enyo.ready</code> and pass it a function
+(and an optional context) as many times as you need and those method
+will only execute once the <code>document</code> is completely ready.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>This is a very imporant declaration. This is where we instance
+our application. We arbitrarily assign it to a global variable
+<code>app</code> for reference if we need it. All other components of this
+application are instanced in the <code>Sample</code> namespace. See the
+<code>apps/Sample.js</code> file for more information on namespaces and what
+this actually means.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sample</span><span class="p">.</span><span class="nx">Application</span><span class="p">();</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>When our application renders for the first time we want it to have
+some data already. Since we're not loading from a remote source we
+go ahead and use some scaffolding we setup in <code>models/Scaffold.js</code>.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">Sample</span><span class="p">.</span><span class="nx">panels</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">Sample</span><span class="p">.</span><span class="nx">Scaffold</span><span class="p">.</span><span class="nx">Roller</span><span class="p">);</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Now that data is present for the <em>view</em> layer to make use of, lets
+go ahead and render it to the DOM. We could have had the application
+automatically render when it was created but in <code>apps/Sample.js</code> we
+deliberately told it not to so we can prepare our scaffold data before
+the <em>view</em> layer was initialized.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">app</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+<span class="p">});</span>
+
+</pre></div>       </section>     </section>    </section>

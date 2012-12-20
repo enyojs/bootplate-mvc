@@ -6,7 +6,7 @@
         "Documents", "DocumentsController", "Editor", "EditorController",
         "FitToTargetBoundsLayout", "Main", "Roller", "RollerCollection",
         "RollerLayout", "RollerModel", "RollerPanel", "Scaffold",
-        "Toolbar", "Welcome"];
+        "Toolbar", "Welcome", "Sample"];
     
     // Locally-scoped variable that is the known root of all file requests.
     // It is used with `enyo.format` to format the appropriate string

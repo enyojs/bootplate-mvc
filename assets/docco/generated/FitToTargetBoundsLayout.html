@@ -1,4 +1,4 @@
- <!-- generated from template for fittotargetboundslayout.js -->      <section class="file">   <header>     <span class="title">FitToTargetBoundsLayout.js</span>     <span class="path">source/ext/FitToTargetBoundsLayout.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2><code>App.FitToTargetBoundsLayout</code>, an interesting layout kind</h2>
+ <!-- generated from template for fittotargetboundslayout.js -->      <section class="file">   <header>     <span class="title">FitToTargetBoundsLayout.js</span>     <span class="path">source/ext/FitToTargetBoundsLayout.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2><code>Sample.FitToTargetBoundsLayout</code>, an interesting layout kind</h2>
 
 <p>We need to make sure that the editor matches the current
 dimensions of another view not directly in its own tree.
@@ -8,7 +8,7 @@ On the view implementing this layout kind, we specify a
 value for the <code>fitTarget</code> property, which can be a string
 path (relative to the view) or a full path to an instance
 or an object reference.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;App.FitToTargetBoundsLayout&quot;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.FitToTargetBoundsLayout&quot;</span><span class="p">,</span>
     <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Layout&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Local copy of the property from the container</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">targetPath</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">container</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
