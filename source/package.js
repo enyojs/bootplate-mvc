@@ -8,5 +8,6 @@ enyo.depends(
 	"models",
 	"controllers",
 	"views",
-	"Core.js"
+	"apps",
+	"start.js"
 );
