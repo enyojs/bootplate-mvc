@@ -1,22 +1,20 @@
  <!-- generated from template for rollerpanel.js -->      <section class="file">   <header>     <span class="title">RollerPanel.js</span>     <span class="path">source/views/Main/Roller/RollerPanel.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>App.RollerPanel</code> kind</h2>
 
-<p>Each time a new record is added to the collection at runtime
-a new panel in our <em>roller</em> is created and it is based off
-of this kind.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+<p>Each time a new record is added to the collection at runtime,
+a new panel based on this kind is created in our roller.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;App.RollerPanel&quot;</span><span class="p">,</span>
-    <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;roller-panel&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Each of these <code>App.RollerPanel</code>s will create its own
-<code>enyo.ModelController</code> as its <code>controller</code> and this is what
-allows the <code>App.Roller</code> kind to set the newly created
-record as this controllers <code>model</code> property. You can see this
-in action in the <code>createPanelForModel</code> method of the
-<code>App.Roller</code> kind.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;enyo.ModelController&quot;</span><span class="p">,</span>
+    <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;roller-panel&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Each <code>App.RollerPanel</code> creates its own <code>enyo.ModelController</code>
+as its <code>controller</code>. This allows the <code>App.Roller</code> kind to set
+the newly created record as the value of this controller's
+<code>model</code> property. You can see this in action in the method
+<code>App.Roller.createPanelForModel()</code>.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;enyo.ModelController&quot;</span><span class="p">,</span>
     <span class="nx">layoutKind</span><span class="o">:</span> <span class="s2">&quot;enyo.FittableRowsLayout&quot;</span><span class="p">,</span>
-    <span class="nx">fit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Making sure that our <em>view</em>s have the corrent content is as
-easy as creating the binding for them, thats it. Here
-all we do is state we want a binding from our <em>controller</em>'s
-<code>header</code> property (remember this isn't a <em>real</em> property of
-the <code>enyo.ModelController</code> it is proxied from the underlying
-model!) to our child's <code>content</code> and we're done!</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
+    <span class="nx">fit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Making sure that our views have the corrent content is as
+easy as creating the bindings for them. Here we declare a
+binding from our controller's <code>header</code> property (remember
+this isn't a real property of the <code>enyo.ModelController</code>;
+it is proxied from the underlying model) to our child's
+<code>content</code>.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;controller.header&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;$.header.content&quot;</span><span class="p">,</span> <span class="nx">oneWay</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
     <span class="p">],</span>
     <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>

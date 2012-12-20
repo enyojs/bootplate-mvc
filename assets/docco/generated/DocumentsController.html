@@ -1,40 +1,39 @@
- <!-- generated from template for documentscontroller.js -->      <section class="file">   <header>     <span class="title">DocumentsController.js</span>     <span class="path">source/controllers/DocumentsController.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally scoped variable that contains the fixed names of each of
+ <!-- generated from template for documentscontroller.js -->      <section class="file">   <header>     <span class="title">DocumentsController.js</span>     <span class="path">source/controllers/DocumentsController.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally-scoped variable that contains the fixed names of each of
 the documentation files we're going to load via <code>enyo.Ajax</code> calls.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">documents</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;App&quot;</span><span class="p">,</span> <span class="s2">&quot;PanelsController&quot;</span><span class="p">,</span> <span class="s2">&quot;Core&quot;</span><span class="p">,</span> <span class="s2">&quot;Divider&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Documents&quot;</span><span class="p">,</span> <span class="s2">&quot;DocumentsController&quot;</span><span class="p">,</span> <span class="s2">&quot;Editor&quot;</span><span class="p">,</span> <span class="s2">&quot;EditorController&quot;</span><span class="p">,</span>
         <span class="s2">&quot;FitToTargetBoundsLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;Main&quot;</span><span class="p">,</span> <span class="s2">&quot;Roller&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerCollection&quot;</span><span class="p">,</span>
         <span class="s2">&quot;RollerLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerModel&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerPanel&quot;</span><span class="p">,</span> <span class="s2">&quot;Scaffold&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Toolbar&quot;</span><span class="p">,</span> <span class="s2">&quot;Welcome&quot;</span><span class="p">];</span>
-    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally scoped variable that is the known root of all file requests.
+    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally-scoped variable that is the known root of all file requests.
 It is used with <code>enyo.format</code> to format the appropriate string
-for the individual file's paths.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="s2">&quot;assets/docco/generated/%..html&quot;</span><span class="p">;</span>
-    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally scoped method to load each of the known document sources.
-It simply iterates over the known pagelet files we're trying
-to load via ajax and calls the loader method.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">loadDocs</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+for the individual file paths.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="s2">&quot;assets/docco/generated/%..html&quot;</span><span class="p">;</span>
+    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally-scoped method to load each of the known document sources.
+It simply iterates over the set of known pagelet files and calls
+the loader method.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">loadDocs</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">loaded</span> <span class="o">=</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">loadedDoc</span><span class="p">);</span>
         <span class="nx">enyo</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">documents</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
            <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="nx">doc</span><span class="p">);</span>
            <span class="nx">loadDoc</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="nx">loaded</span><span class="p">);</span>
         <span class="p">});</span>
     <span class="p">};</span>
-        </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally scoped method that issues an ajax request using
-<code>enyo.Ajax</code> and sets the responder to the one provided in the 
-<em>loaded</em> parameter.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">loadDoc</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="nx">loaded</span><span class="p">)</span> <span class="p">{</span>
+        </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally-scoped method that issues a request using <code>enyo.Ajax</code> and
+sets the responder to the one provided in the <code>loaded</code> parameter.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">loadDoc</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="nx">loaded</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">({</span><span class="nx">url</span><span class="o">:</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">handleAs</span><span class="o">:</span> <span class="s2">&quot;text&quot;</span><span class="p">});</span>
         <span class="nx">xhr</span><span class="p">.</span><span class="nx">response</span><span class="p">(</span><span class="nx">loaded</span><span class="p">).</span><span class="nx">go</span><span class="p">();</span>
     <span class="p">};</span>
     </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>App.DocumentsController</code> kind</h2>
 
-<p>This is an <code>enyo.ArrayController</code> - a class designed
-to act like an <em>array</em> but with the added benefit of
-allowing bindings and observers. And because it is
-a kind of <code>enyo.Controller</code> it can have multiple event
-targets which makes it perfect for how we're implementing
-it here. A singleton instance of this class is implemented
-in <code>Core.js</code> and that instance is shared between the
-<code>Documents.js</code> <em>view</em> and the <code>Divider.js</code> <em>view</em>. Neither
-<em>view</em> is aware of the other but <code>Dividerj.js</code> dispatches
-its events to this <em>controller</em> and when the <code>selected</code>
-property changes the <code>Documents.js</code> <em>view</em> responds.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+<p><code>App.DocumentsController</code> is derived from <code>enyo.ArrayController</code>,
+a kind designed to act like an array, but with support for bindings
+and observers. Because it inherits from <code>enyo.Controller</code>, it can
+have multiple event targets, which makes it a perfect fit for our
+present needs.</p>
+
+<p>A singleton instance of this kind is created in <code>Core.js</code> and
+shared between the <code>Documents.js</code> view and the <code>Divider.js</code> view.
+Neither view is aware of the other, but <code>Divider.js</code> dispatches its
+events to this controller, and when the <code>selected</code> property changes,
+the <code>Documents.js</code> view responds.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
         <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;App.DocumentsController&quot;</span><span class="p">,</span>
         <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.ArrayController&quot;</span><span class="p">,</span>
         <span class="nx">handlers</span><span class="o">:</span> <span class="p">{</span>
@@ -47,18 +46,18 @@ property changes the <code>Documents.js</code> <em>view</em> responds.</p>      
         <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
             <span class="nx">loadDocs</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-        <span class="p">},</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Once a document/pagelet is loaded via ajax we create
-an entry for it. If it is the <em>Welcome</em> pagelet then
-we go ahead and select that one. Because these are
-asynchronous we don't know what the index will be.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">loadedDoc</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">},</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Once a document/pagelet is loaded via Ajax, we create an entry
+for it. If it is the "Welcome" pagelet, we go ahead and select
+it. Because the loading transactions are asynchronous, we don't
+know what the index will be.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">loadedDoc</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
             <span class="kd">var</span> <span class="nx">idx</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">src</span><span class="o">:</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="nx">content</span><span class="p">})</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;Welcome&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;selected&quot;</span><span class="p">,</span> <span class="nx">idx</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="p">},</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We mapped the <em>onSelect</em> and <em>ontap</em> events to this handler. When
-fired we attempt to find a matching entry in our known
-document/pagelets. We manage this through the use of
-the <code>enyo.ArrayController.find</code> method.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">selectSource</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">},</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We've mapped the <code>onSelect</code> and <code>ontap</code> events to this handler.
+When those events are fired, we attempt to find a matching
+entry in our set of known documents/pagelets by calling the
+<code>find</code> method on <code>enyo.ArrayController</code>.</p>       </section>       <section class="source">         <div class="highlight"><pre>        <span class="nx">selectSource</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
             <span class="kd">var</span> <span class="nx">content</span><span class="p">;</span>
             <span class="kd">var</span> <span class="nx">target</span><span class="p">;</span>
             <span class="kd">var</span> <span class="nx">found</span><span class="p">;</span>

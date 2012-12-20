@@ -1,10 +1,9 @@
 
 // The Scaffolding
 // ---------------
-// We wanted to be able to start with some messages in the roller
-// so we simply create an array of would-be records and when the
-// application is starting up we go ahead and add these to the collection.
-// You'll see this in action in `Core.js`.
+// We want there to be some messages in the roller when the user first
+// sees it, so we create an array of sample records and add these to the
+// collection during app startup. (You'll see this happen in `Core.js`.)
 App.Scaffold = {
     "Roller": [
         {header: "Welcome to a new pattern of development in Enyo.js"},

@@ -1,22 +1,21 @@
 
 // The `App.RollerCollection` kind
 // -------------------------------
-// It is helpful to abstract your application objects
-// if for no other reason than clarity. In this case
-// we have no special properties on our _collection_
-// definition except for the `model` property that must
-// be set. If you are _absolutely certain_ you will not
-// extend the class and prefer __not__ to create an entry
-// for the _collection_ kind, you're in luck. If you don't
-// specify a _collection_ kind in other kind definitions
-// they will automatically use `enyo.Collection` generically.
-// This means, though, that if you want to use a specific
-// _model_ kind with that collection you must instead
-// provide that property (`model`) on the kind so it can
-// be found during initialization. A `enyo.Collection` is
-// useless without knowing what the underlying `enyo.Model`
-// type is and it will let you know if it cannot figure out
-// what _model_ kind to use.
+// It is helpful to abstract your application objects--for clarity's
+// sake, if nothing else. In this case, we have no special properties
+// in our collection definition except for `model`, which must be set.
+//
+// If you are absolutely certain that you will not extend the kind, and
+// you prefer not to create an entry for the collection kind, you may
+// choose not to create one.
+//
+// If you don't specify a collection kind in other kind definitions,
+// they will use `enyo.Collection` by default. This means, however,
+// that if you want to use a specific model kind with the collection,
+// you must define the `model` property on the kind, so that it can be
+// found during initialization. An `enyo.Collection` is useless if it
+// doesn't know what the underlying `enyo.Model` type is, and it will
+// let you know if it cannot figure out which model kind to use.
 enyo.kind({
     name: "App.RollerCollection",
     kind: "enyo.Collection",

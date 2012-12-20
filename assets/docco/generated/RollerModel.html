@@ -1,14 +1,14 @@
  <!-- generated from template for rollermodel.js -->      <section class="file">   <header>     <span class="title">RollerModel.js</span>     <span class="path">source/models/Models/RollerModel.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>App.RollerModel</code> kind</h2>
 
-<p>While this subkind of <code>enyo.Model</code> doesn't do much
-magic it is important to note a paricular convention
-that can spare you many headaches. <strong>While it is not
-required to set a default value for a property you
-intend to set on model-instances (records) it is
-better if you do!</strong> Also note that when you create a
-new record in the application by pressing the <em>Add</em>
-button the initial message is the one found here
-in the model defaults.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+<p>While this subkind of <code>enyo.Model</code> doesn't do a whole lot, it
+serves to illustrate one very important point: It is highly
+recommended (though not strictly mandatory) that you specify a
+default value for each property you set on a model-instance
+(record).</p>
+
+<p>Also note that when you create a new record at runtime (by
+pressing the "Add" button), the initial message is the one
+declared here in the model's <code>defaults</code> block.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;App.RollerModel&quot;</span><span class="p">,</span>
     <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Model&quot;</span><span class="p">,</span>
     <span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>

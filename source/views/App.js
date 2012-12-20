@@ -25,7 +25,7 @@ enyo.App({
     // namespaces you use for your objects, the convention is to rely on
     // the name you chose for your app.
     name: "App",
-    // You can always apply classes, even to the `rootView`.
+    // You can always apply CSS classes, even to the `rootView`.
     classes: "mvc-app",
     fit: true,
     layoutKind: "enyo.FittableRowsLayout",
