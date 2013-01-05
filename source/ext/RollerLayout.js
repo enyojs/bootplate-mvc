@@ -1,12 +1,12 @@
 
-// The `App.RollerLayout` kind
+// The `Sample.RollerLayout` kind
 // ---------------------------
-// This special layout handler for `App.Roller` is designed to make
+// This special layout handler for `Sample.Roller` is designed to make
 // adjustments in a mobile environment (where space is limited) or
 // when an orientation change reduces the amount of vertical display
 // space available.
 enyo.kind({
-  name: "App.RollerLayout",
+  name: "Sample.RollerLayout",
   kind: "enyo.Layout",
   flow: function () {
     this.reflow();  

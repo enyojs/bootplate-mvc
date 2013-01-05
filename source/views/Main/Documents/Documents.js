@@ -1,17 +1,17 @@
 
-// The `App.Documents` kind
+// The `Sample.Documents` kind
 // ------------------------
-// `App.Documents` is a special container kind that works in tandem
-// with its controller, `App.DocumentsController`.  The controller
+// `Sample.Documents` is a special container kind that works in tandem
+// with its controller, `Sample.DocumentsController`.  The controller
 // is responsible for asynchronously loading static HTML "pagelets".
 // This particular view is agnostic as to what pages actually exist
 // or which one is selected (beyond knowing its index). It is bound
 // to the `selected` property of its controller; when that value
-// changes, `App.Documents` retrieves the pagelet content and injects 
+// changes, `Sample.Documents` retrieves the pagelet content and injects 
 // it into itself.
 enyo.kind({
-    name: "App.Documents",
-    controller: "App.documents",
+    name: "Sample.Documents",
+    controller: "Sample.documents",
     id: "documents",
     allowHtml: true,
     // The `selected` property maps back to the controller's currently

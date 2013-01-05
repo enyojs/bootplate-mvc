@@ -1,6 +1,6 @@
 enyo.depends(
     "Main",
-    "App.js",
+    "RootView.js",
     "Toolbar.js",
     "Editor.js"
 );

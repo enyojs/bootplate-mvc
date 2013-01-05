@@ -1,9 +1,9 @@
  <!-- generated from template for documentscontroller.js -->      <section class="file">   <header>     <span class="title">DocumentsController.js</span>     <span class="path">source/controllers/DocumentsController.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally-scoped variable that contains the fixed names of each of
-the documentation files we're going to load via <code>enyo.Ajax</code> calls.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">documents</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;App&quot;</span><span class="p">,</span> <span class="s2">&quot;PanelsController&quot;</span><span class="p">,</span> <span class="s2">&quot;Core&quot;</span><span class="p">,</span> <span class="s2">&quot;Divider&quot;</span><span class="p">,</span>
+the documentation files we're going to load via <code>enyo.Ajax</code> calls.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">documents</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;RootView&quot;</span><span class="p">,</span> <span class="s2">&quot;PanelsController&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;Divider&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Documents&quot;</span><span class="p">,</span> <span class="s2">&quot;DocumentsController&quot;</span><span class="p">,</span> <span class="s2">&quot;Editor&quot;</span><span class="p">,</span> <span class="s2">&quot;EditorController&quot;</span><span class="p">,</span>
         <span class="s2">&quot;FitToTargetBoundsLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;Main&quot;</span><span class="p">,</span> <span class="s2">&quot;Roller&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerCollection&quot;</span><span class="p">,</span>
         <span class="s2">&quot;RollerLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerModel&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerPanel&quot;</span><span class="p">,</span> <span class="s2">&quot;Scaffold&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Toolbar&quot;</span><span class="p">,</span> <span class="s2">&quot;Welcome&quot;</span><span class="p">];</span>
+        <span class="s2">&quot;Toolbar&quot;</span><span class="p">,</span> <span class="s2">&quot;Welcome&quot;</span><span class="p">,</span> <span class="s2">&quot;Sample&quot;</span><span class="p">];</span>
     </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally-scoped variable that is the known root of all file requests.
 It is used with <code>enyo.format</code> to format the appropriate string
 for the individual file paths.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="s2">&quot;assets/docco/generated/%..html&quot;</span><span class="p">;</span>
@@ -21,9 +21,9 @@ sets the responder to the one provided in the <code>loaded</code> parameter.</p>
         <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">({</span><span class="nx">url</span><span class="o">:</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">handleAs</span><span class="o">:</span> <span class="s2">&quot;text&quot;</span><span class="p">});</span>
         <span class="nx">xhr</span><span class="p">.</span><span class="nx">response</span><span class="p">(</span><span class="nx">loaded</span><span class="p">).</span><span class="nx">go</span><span class="p">();</span>
     <span class="p">};</span>
-    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>App.DocumentsController</code> kind</h2>
+    </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Sample.DocumentsController</code> kind</h2>
 
-<p><code>App.DocumentsController</code> is derived from <code>enyo.ArrayController</code>,
+<p><code>Sample.DocumentsController</code> is derived from <code>enyo.ArrayController</code>,
 a kind designed to act like an array, but with support for bindings
 and observers. Because it inherits from <code>enyo.Controller</code>, it can
 have multiple event targets, which makes it a perfect fit for our
@@ -34,15 +34,13 @@ shared between the <code>Documents.js</code> view and the <code>Divider.js</code
 Neither view is aware of the other, but <code>Divider.js</code> dispatches its
 events to this controller, and when the <code>selected</code> property changes,
 the <code>Documents.js</code> view responds.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
-        <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;App.DocumentsController&quot;</span><span class="p">,</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.DocumentsController&quot;</span><span class="p">,</span>
         <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.ArrayController&quot;</span><span class="p">,</span>
         <span class="nx">handlers</span><span class="o">:</span> <span class="p">{</span>
             <span class="nx">onSelect</span><span class="o">:</span> <span class="s2">&quot;selectSource&quot;</span><span class="p">,</span>
             <span class="nx">ontap</span><span class="o">:</span> <span class="s2">&quot;selectSource&quot;</span>
         <span class="p">},</span>
-        <span class="kr">public</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">selected</span><span class="o">:</span> <span class="mi">0</span>
-        <span class="p">},</span>
+        <span class="nx">selected</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
             <span class="nx">loadDocs</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>

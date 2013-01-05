@@ -1,15 +1,15 @@
 
-// The `App.Editor` kind
+// The `Sample.Editor` kind
 // ----------------------
 // The editor is a view that is only visible when the application
-// state property (on `App.panels`) is set to true. This is only
+// state property (on `Sample.panels`) is set to true. This is only
 // the case when the "Edit" button is selected. By applying some CSS
 // (using LESS) we can create the effect of an overlay. With the
 // proper bindings, we can set up a text editor with hooks into the
 // modifiable content of the underlying record; proper bindings to
 // other views can give us real-time UI updates with no additional work.
 enyo.kind({
-    name: "App.Editor",
+    name: "Sample.Editor",
     id: "editor",
     // We use a custom controller kind, which we call a "view controller"
     // because it is owned by this view and has awareness of it. Because
@@ -22,7 +22,7 @@ enyo.kind({
     // expected; if not, the event is routed right back up through the
     // view. This allows us to take non-view-related logic and graft it
     // onto a separate kind that has additional functionality.
-    controller: "App.EditorController",
+    controller: "Sample.EditorController",
     // We are able to create bindings with relative paths for both the
     // `from` and `to` properties. One thing to note is that the
     // controller is subkinded from `enyo.ModelController`--this allows
@@ -39,7 +39,7 @@ enyo.kind({
     ],
     // We use a custom layout kind that can be found in the `ext` directory
     // in the project source.
-    layoutKind: "App.FitToTargetBoundsLayout",
+    layoutKind: "Sample.FitToTargetBoundsLayout",
     // The layout looks for the `fitTarget` property when detecting the
     // view for which we want to match the bounds. This is only necessary
     // due to limitations in the way the CSS is applied--this editor

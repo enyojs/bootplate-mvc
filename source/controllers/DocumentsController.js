@@ -2,11 +2,11 @@
 
     // Locally-scoped variable that contains the fixed names of each of
     // the documentation files we're going to load via `enyo.Ajax` calls.
-    var documents = [ "App", "PanelsController", "Core", "Divider",
+    var documents = [ "RootView", "PanelsController", "start", "Divider",
         "Documents", "DocumentsController", "Editor", "EditorController",
         "FitToTargetBoundsLayout", "Main", "Roller", "RollerCollection",
         "RollerLayout", "RollerModel", "RollerPanel", "Scaffold",
-        "Toolbar", "Welcome"];
+        "Toolbar", "Welcome", "Sample"];
     
     // Locally-scoped variable that is the known root of all file requests.
     // It is used with `enyo.format` to format the appropriate string
@@ -31,9 +31,9 @@
         xhr.response(loaded).go();
     };
     
-    // The `App.DocumentsController` kind
-    // ----------------------------------
-    // `App.DocumentsController` is derived from `enyo.ArrayController`,
+    // The `Sample.DocumentsController` kind
+    // -------------------------------------
+    // `Sample.DocumentsController` is derived from `enyo.ArrayController`,
     // a kind designed to act like an array, but with support for bindings
     // and observers. Because it inherits from `enyo.Controller`, it can
     // have multiple event targets, which makes it a perfect fit for our
@@ -45,15 +45,13 @@
     // events to this controller, and when the `selected` property changes,
     // the `Documents.js` view responds.
     enyo.kind({
-        name: "App.DocumentsController",
+        name: "Sample.DocumentsController",
         kind: "enyo.ArrayController",
         handlers: {
             onSelect: "selectSource",
             ontap: "selectSource"
         },
-        public: {
-            selected: 0
-        },
+        selected: 0,
         create: function () {
             this.inherited(arguments);
             loadDocs(this);

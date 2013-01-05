@@ -16,12 +16,6 @@
 		<script src="build/app.js"></script>
 	</head>
 	<body class="enyo-unselectable">
-		<script>
-			if (!window.enyo) {
-				alert('No application build found, redirecting to debug.html.');
-				location = 'debug.html';
-			}
-			enyo.start();
-		</script>
+	    <script type="text/javascript">if (undefined === window.enyo) location = "debug.html";</script>
 	</body>
 </html>

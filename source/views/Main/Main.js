@@ -1,5 +1,5 @@
 
-// The `App.Main` kind
+// The `Sample.Main` kind
 // -------------------
 // This is the main presentation portion of the application. We place
 // all the content for the app in a vertical scroller. The presentation
@@ -10,7 +10,7 @@
 // scope-relevant bindings to its children.
 enyo.kind({
     // Notice that we use our application namespace for this kind.
-    name: "App.Main",
+    name: "Sample.Main",
     kind: "enyo.Scroller",
     id: "main",
     classes: "main",
@@ -32,17 +32,17 @@ enyo.kind({
         //
         // Bindings are one-way by default. We will see an example of a
         // two-way binding in another component.
-        {from: "App.panels.isEditing", to: "$.editor.showing"}
+        {from: "Sample.panels.isEditing", to: "$.editor.showing"}
     ],
     handlers: {
         // Ugly hack for a Chrome-related bug.
         oninput: "chromeworkaround"
     },
     components: [
-        {name: "roller", kind: "App.Roller"},
-        {name: "editor", kind: "App.Editor"},
-        {name: "divider", kind: "App.Divider"},
-        {name: "documents", kind: "App.Documents"},
+        {name: "roller", kind: "Sample.Roller"},
+        {name: "editor", kind: "Sample.Editor"},
+        {name: "divider", kind: "Sample.Divider"},
+        {name: "documents", kind: "Sample.Documents"},
         {name: "footer", id: "footer", tag: "footer"}
     ],
     // This is an ugly hack to force Chrome to re-render sublayers
