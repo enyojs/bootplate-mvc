@@ -3,7 +3,7 @@ the documentation files we're going to load via <code>enyo.Ajax</code> calls.</p
         <span class="s2">&quot;Documents&quot;</span><span class="p">,</span> <span class="s2">&quot;DocumentsController&quot;</span><span class="p">,</span> <span class="s2">&quot;Editor&quot;</span><span class="p">,</span> <span class="s2">&quot;EditorController&quot;</span><span class="p">,</span>
         <span class="s2">&quot;FitToTargetBoundsLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;Main&quot;</span><span class="p">,</span> <span class="s2">&quot;Roller&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerCollection&quot;</span><span class="p">,</span>
         <span class="s2">&quot;RollerLayout&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerModel&quot;</span><span class="p">,</span> <span class="s2">&quot;RollerPanel&quot;</span><span class="p">,</span> <span class="s2">&quot;Scaffold&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Toolbar&quot;</span><span class="p">,</span> <span class="s2">&quot;Welcome&quot;</span><span class="p">];</span>
+        <span class="s2">&quot;Toolbar&quot;</span><span class="p">,</span> <span class="s2">&quot;Welcome&quot;</span><span class="p">,</span> <span class="s2">&quot;Sample&quot;</span><span class="p">];</span>
     </pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Locally-scoped variable that is the known root of all file requests.
 It is used with <code>enyo.format</code> to format the appropriate string
 for the individual file paths.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="s2">&quot;assets/docco/generated/%..html&quot;</span><span class="p">;</span>
@@ -40,9 +40,7 @@ the <code>Documents.js</code> view responds.</p>       </section>       <section
             <span class="nx">onSelect</span><span class="o">:</span> <span class="s2">&quot;selectSource&quot;</span><span class="p">,</span>
             <span class="nx">ontap</span><span class="o">:</span> <span class="s2">&quot;selectSource&quot;</span>
         <span class="p">},</span>
-        <span class="kr">public</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">selected</span><span class="o">:</span> <span class="mi">0</span>
-        <span class="p">},</span>
+        <span class="nx">selected</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
             <span class="nx">loadDocs</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>

@@ -19,35 +19,30 @@ enyo.kind({
     // a kind reference and it will instantiate the collection kind when
     // it is created.
     collection: "Sample.RollerCollection",
-    // While in Enyo 2.2+ it is not required to create the `published`
-    // hash so that the corresponding getters and setters are created,
-    // this is still considered to be a best practice.
-    published: {
-        // The entire application has state. One possible state is the
-        // is the editing state. While the `isEditing` property is
-        // designed to be used directly with the `Sample.Roller` view kind,
-        // any other component in the application may respond to it as
-        // well (as we will see).
-        isEditing: false,
-        // This is an example of abstracting common elements to the
-        // outermost commonly-available controller to be shared between
-        // objects that have no direct connection but may share some
-        // state. In this case, some of the application's functionality
-        // is separated because of how it needs to be represented in the
-        // DOM, but both elements need to know what `index` the roller
-        // has selected. Using bindings, we make this property available
-        // from the outermost controller, so that any instance of
-        // `enyo.View` or `enyo.Controller` may access it as needed.
-        //
-        // This value is actually bound to the view that implements the
-        // `enyo.Panels` that coordinates the presentation of these
-        // models in the `enyo.Collection`. The binding to this property
-        // is initiated in the view.
-        index: 0,
-        // A simple boolean to keep track of whether or not the animation
-        // is running
-        isStarted: false
-    },
+    // The entire application has state. One possible state is the
+    // is the editing state. While the `isEditing` property is
+    // designed to be used directly with the `Sample.Roller` view kind,
+    // any other component in the application may respond to it as
+    // well (as we will see).
+    isEditing: false,
+    // This is an example of abstracting common elements to the
+    // outermost commonly-available controller to be shared between
+    // objects that have no direct connection but may share some
+    // state. In this case, some of the application's functionality
+    // is separated because of how it needs to be represented in the
+    // DOM, but both elements need to know what `index` the roller
+    // has selected. Using bindings, we make this property available
+    // from the outermost controller, so that any instance of
+    // `enyo.View` or `enyo.Controller` may access it as needed.
+    //
+    // This value is actually bound to the view that implements the
+    // `enyo.Panels` that coordinates the presentation of these
+    // models in the `enyo.Collection`. The binding to this property
+    // is initiated in the view.
+    index: 0,
+    // A simple boolean to keep track of whether or not the animation
+    // is running
+    isStarted: false,
     // The timer reference as returned by `setInterval`
     timer: null,
     // The following methods are actually dispatch event targets of an

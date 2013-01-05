@@ -51,9 +51,7 @@
             onSelect: "selectSource",
             ontap: "selectSource"
         },
-        public: {
-            selected: 0
-        },
+        selected: 0,
         create: function () {
             this.inherited(arguments);
             loadDocs(this);

@@ -1,23 +1,11 @@
- <!-- generated from template for rollercollection.js -->      <section class="file">   <header>     <span class="title">RollerCollection.js</span>     <span class="path">source/models/Collections/RollerCollection.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Sample.RollerCollection</code> kind</h2>
+ <!-- generated from template for rollercollection.js -->      <section class="file">   <header>     <span class="title">RollerCollection.js</span>     <span class="path">source/models/Collections/RollerCollection.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Sample.RollerCollection</code></h2>
 
 <p>It is helpful to abstract your application objects--for clarity's
 sake, if nothing else. In this case, we have no special properties
-in our collection definition except for <code>model</code>, which must be set.</p>
-
-<p>If you are absolutely certain that you will not extend the kind, and
-you prefer not to create an entry for the collection kind, you may
-choose not to create one.</p>
-
-<p>If you don't specify a collection kind in other kind definitions,
-they will use <code>enyo.Collection</code> by default. This means, however,
-that if you want to use a specific model kind with the collection,
-you must define the <code>model</code> property on the kind, so that it can be
-found during initialization. An <code>enyo.Collection</code> is useless if it
-doesn't know what the underlying <code>enyo.Model</code> type is, and it will
-let you know if it cannot figure out which model kind to use.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.RollerCollection&quot;</span><span class="p">,</span>
-    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Collection&quot;</span><span class="p">,</span>
-    <span class="nx">model</span><span class="o">:</span> <span class="s2">&quot;Sample.RollerModel&quot;</span>
+in our collection definition except for <code>model</code>, which must be set.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Sample</span><span class="p">.</span><span class="nx">RollerCollection</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+        <span class="nx">model</span><span class="o">:</span> <span class="nx">Sample</span><span class="p">.</span><span class="nx">RollerModel</span>
+    <span class="p">});</span>
 <span class="p">});</span>
 
 </pre></div>       </section>     </section>    </section>

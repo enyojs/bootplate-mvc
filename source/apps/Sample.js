@@ -36,7 +36,7 @@ enyo.kind({
     // declarations `global: true`. The application will not attempt to prefix the
     // `name` with the namespace of the given _kind_.
     controllers: [
-        {name: "panels", kind: "Sample.PanelsController"},
-        {name: "documents", kind: "Sample.DocumentsController"}
+        {name: "Sample.panels", kind: "Sample.PanelsController"},
+        {name: "Sample.documents", kind: "Sample.DocumentsController"}
     ]
 });
