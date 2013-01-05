@@ -1,5 +1,5 @@
 enyo.depends(
-    "App.less",
+    "RootView.less",
     "Roller.less",
     "Main.less",
     "Editor.less",

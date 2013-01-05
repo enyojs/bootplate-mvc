@@ -1,15 +1,15 @@
- <!-- generated from template for documents.js -->      <section class="file">   <header>     <span class="title">Documents.js</span>     <span class="path">source/views/Main/Documents/Documents.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>App.Documents</code> kind</h2>
+ <!-- generated from template for documents.js -->      <section class="file">   <header>     <span class="title">Documents.js</span>     <span class="path">source/views/Main/Documents/Documents.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Sample.Documents</code> kind</h2>
 
-<p><code>App.Documents</code> is a special container kind that works in tandem
-with its controller, <code>App.DocumentsController</code>.  The controller
+<p><code>Sample.Documents</code> is a special container kind that works in tandem
+with its controller, <code>Sample.DocumentsController</code>.  The controller
 is responsible for asynchronously loading static HTML "pagelets".
 This particular view is agnostic as to what pages actually exist
 or which one is selected (beyond knowing its index). It is bound
 to the <code>selected</code> property of its controller; when that value
-changes, <code>App.Documents</code> retrieves the pagelet content and injects 
+changes, <code>Sample.Documents</code> retrieves the pagelet content and injects 
 it into itself.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;App.Documents&quot;</span><span class="p">,</span>
-    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;App.documents&quot;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.Documents&quot;</span><span class="p">,</span>
+    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;Sample.documents&quot;</span><span class="p">,</span>
     <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;documents&quot;</span><span class="p">,</span>
     <span class="nx">allowHtml</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>The <code>selected</code> property maps back to the controller's currently
 selected model by reference and is implemented via the binding.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">selected</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We only need one binding to make this happen.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>

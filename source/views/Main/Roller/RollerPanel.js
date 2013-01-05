@@ -1,16 +1,16 @@
 
-// The `App.RollerPanel` kind
+// The `Sample.RollerPanel` kind
 // ---------------------------
 // Each time a new record is added to the collection at runtime,
 // a new panel based on this kind is created in our roller.
 enyo.kind({
-    name: "App.RollerPanel",
+    name: "Sample.RollerPanel",
     classes: "roller-panel",
-    // Each `App.RollerPanel` creates its own `enyo.ModelController`
-    // as its `controller`. This allows the `App.Roller` kind to set
+    // Each `Sample.RollerPanel` creates its own `enyo.ModelController`
+    // as its `controller`. This allows the `Sample.Roller` kind to set
     // the newly created record as the value of this controller's
     // `model` property. You can see this in action in the method
-    // `App.Roller.createPanelForModel()`.
+    // `Sample.Roller.createPanelForModel()`.
     controller: "enyo.ModelController",
     layoutKind: "enyo.FittableRowsLayout",
     fit: true,

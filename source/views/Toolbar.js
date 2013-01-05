@@ -1,5 +1,5 @@
 
-// The `App.Toolbar` kind
+// The `Sample.Toolbar` kind
 // ----------------------
 // The toolbar in our application is interesting because
 // of the number of things it connects to. It uses bindings
@@ -10,7 +10,7 @@
 enyo.kind({
     // We name the toolbar as a kind in the namespace of the
     // application.
-    name: "App.Toolbar",
+    name: "Sample.Toolbar",
     // We base the new kind on `enyo.MoreToolbar` because we want
     // this application to look good and work well on mobile devices
     // as well as desktop browsers.
@@ -19,16 +19,15 @@ enyo.kind({
     // reference later on. This is not strictly necessary.
     id: "toolbar",
     // Although the toolbar does not have its own controller, we
-    // give it a reference to the panels controller we set up
-    // in `main`. This gives us a relative reference to the
-    // controller from the view; more importantly, it gives us
-    // automatic propagation of events.
-    controller: "App.panels",
+    // give it a reference to the panels controller. This gives us
+    // a relative reference to the controller from the view; more 
+    // importantly, it gives us automatic propagation of events.
+    controller: "Sample.panels",
     bindings: [
         // Notice that we have bindings from the `isEditing` property of
         // the panels controller to the `disabled` property of these
         // `onyx.Button` objects. Previously, we used the same property
-        // to set the `showing` state of our `App.Editor` view.
+        // to set the `showing` state of our `Sample.Editor` view.
         {from: "controller.isEditing", to: "$.edit.disabled"},
         {from: "controller.isEditing", to: "$.add.disabled"},
         {from: "controller.length", to: "$.count.content"},
