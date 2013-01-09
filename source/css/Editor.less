@@ -1,5 +1,15 @@
 @import "foss/elements.less";
 
+@media all and (min-device-width: 320px) and (max-device-width: 480px) {
+    #editor {
+        .input-label {
+            &.model-view {
+                padding: 0 5px 5px 5px;
+            }
+        }
+    }
+}
+
 // The CSS for the Mvc.Editor kind
 #editor {
     position: absolute;
@@ -25,7 +35,7 @@
     }
 
     .input-label {
-        padding: 0 25px 25px 25px;
+        padding: 25px 25px 25px 25px;
         position: relative;
         bottom: 10px;
         &.model-view {
@@ -36,6 +46,10 @@
             left: 10px;
             right: 10px;
             .rounded(5px);
+            
+            h3 {
+                margin: 0;
+            }
         }
     }
 }
