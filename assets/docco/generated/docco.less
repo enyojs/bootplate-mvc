@@ -1,4 +1,4 @@
-section {
+div {
     
     display: block;
     box-sizing: border-box;
@@ -23,8 +23,8 @@ section {
         font-size: 13px;
     }
     
-    // each file-article has a header
-    &.file header {
+    // each file-article has a div
+    &.file div {
         .title {
             font-size: 35px;
             font-weight: bold;
@@ -34,13 +34,13 @@ section {
         }
     }
     
-    // each file-article has a section "group" that
+    // each file-article has a div "group" that
     // also contains the generated documentation/markup
     // for the comments and the associated source code
-    &.file section {
+    &.file div {
         display: table;
         
-        // these are the outter-most sections and are
+        // these are the outter-most divs and are
         // broken up by the parser
         &.group {
             position: relative;
@@ -52,7 +52,7 @@ section {
             overflow-x: scroll;
             
         
-            // this is the comment/documentation section of
+            // this is the comment/documentation div of
             // the group
             .comments {
                 display: table-cell;
@@ -89,11 +89,11 @@ section {
 // lets try a media query to see if we can make the documentation a little
 // bit (keywords, little and bit) more readable
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    section {
+    div {
         &.file {
             display: block;
             
-            section {
+            div {
                 &.group {
                     display: inline-block;
                 
@@ -109,7 +109,7 @@ section {
             }
         }
         
-        &.file header {
+        &.file div {
             .title, .path {
                 word-wrap: break-word;
                 white-space: pre-line;

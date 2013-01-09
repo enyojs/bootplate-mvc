@@ -48,10 +48,8 @@ enyo.kind({
     // `enyo.View` (the toolbar). These methods are executed in response
     // to events bubbled from the view layer.
     //
-    // When the `"Edit"` button is tapped, we change to the editing state.
-    editModel: function () {
-        // We use the `set` method even though we've published the property.
-        this.set("isEditing", true);
+    toggleEditing: function () {
+        this.set("isEditing", !this.isEditing);
     },
     // When the `"Add"` button is tapped, we add a new model to the
     // collection.  Its properties have the default values defined in

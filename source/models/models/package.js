@@ -1,3 +1,4 @@
 enyo.depends(
-    "RollerModel.js"
+    "RollerModel.js",
+    "NodeModel.js"
 );

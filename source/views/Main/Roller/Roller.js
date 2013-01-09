@@ -9,7 +9,6 @@ enyo.kind({
     name: "Sample.Roller",
     id: "roller",
     classes: "roller-container",
-    maxHeight: 400,
     // To receive events and have a relative path to the controller,
     // we set `Sample.panels` as our view's controller.
     controller: "Sample.panels",
@@ -22,20 +21,18 @@ enyo.kind({
         // We've bound the `isEditing` state property to a local `isEditing`
         // property so we can get change notifications; this is a two-way
         // binding.
-        {from: "controller.isEditing", to: "isEditing", oneWay: false},
+        {from: ".controller.isEditing", to: ".isEditing", oneWay: false},
         // We bind our child's `index` property to our controller's `index`
         // property in a two-way binding.
-        {from: "$.panels.index", to: "controller.index", oneWay: false},
+        {from: ".$.panels.index", to: ".controller.index", oneWay: false}
     ],
-    // We have some specific layout functionality for mobile platforms.
-    layoutKind: "Sample.RollerLayout",
     // Not only have we wrapped the `enyo.Panels` views in this wrapper,
     // we've also set a very important property, `controller`, to the
     // panels controller (which happens to be a collection controller),
     // thus giving us access to the collection and its events as well as
     // sending our events back to the controller.
     components: [
-        {name: "panels", kind: "enyo.Panels", draggable: false, fit: true,
+        {name: "panels", margin: 0, kind: "enyo.Panels", draggable: false, fit: true,
             id: "roller-panels", wrap: false, arrangerKind: "enyo.TopBottomArranger"}
     ],
     // This method handles the event notifying us that a new model has
@@ -62,16 +59,11 @@ enyo.kind({
         this.render();
     },
     // Synchronizes any models in the collection to panels
-    // we now need in our roller. The event that triggers
-    // this is only fired once, from the function `enyo.run`
-    // in `Core.js`, because it loads the scaffolded models
-    // silently and then has our controller (the panels controller)
-    // notify us that we can create the corresponding panels.
-    // Normally we would go into edit mode when we detect that a
-    // model has been added, but this first batch of data is an
-    // exception.
+    // we now need in our roller.
     syncPanelsToCollection: function () {
-        enyo.forEach(this.controller.models, function (model) {this.createPanelForModel(model)}, this);
+        enyo.forEach(this.controller.models, function (model) {
+            this.createPanelForModel(model)
+        }, this);
     },
     // Does some view-centric work based on the state, adding and
     // removing classes, and thus triggering transitions in browsers

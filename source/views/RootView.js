@@ -12,7 +12,6 @@ enyo.kind({
     classes: "mvc-app",
     layoutKind: "enyo.FittableRowsLayout",
     components: [
-        {name: "toolbar", kind: "Sample.Toolbar"},
         {name: "main", kind: "Sample.Main"}
     ]
 });
