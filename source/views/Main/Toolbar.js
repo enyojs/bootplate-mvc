@@ -28,18 +28,18 @@ enyo.kind({
         // the panels controller to the `disabled` property of these
         // `onyx.Button` objects. Previously, we used the same property
         // to set the `showing` state of our `Sample.Editor` view.
-        {from: "controller.isEditing", to: "$.edit.disabled"},
-        {from: "controller.isEditing", to: "$.add.disabled"},
-        {from: "controller.length", to: "$.count.content"},
+        {from: ".controller.isEditing", to: ".$.edit.content", transform: "editingTransform"},
+        {from: ".controller.isEditing", to: ".$.add.disabled"},
+        {from: ".controller.length", to: ".$.count.content"},
         // Make special note of the fact that we are using a transform
         // here. We name the transform but elect to place it on the
         // `owner` object of the binding. The binding will find it and
         // transform the `0-n` index to `1-n+1` for our benefit.
-        {from: "controller.index", to: "$.showing.content", transform: "showingTransform"}
+        {from: ".controller.index", to: ".$.showing.content", transform: "showingTransform"}
     ],
     components: [
         {id: "app-label", content: "Enyo.js MVC"},
-        {name: "edit", kind: "onyx.Button", content: "Edit", ontap: "editModel"},
+        {name: "edit", kind: "onyx.Button", content: "Edit", ontap: "toggleEditing"},
         {name: "add", kind: "onyx.Button", content: "Add", ontap: "addModel"},
         {name: "next", kind: "onyx.Button", content: "Next", ontap: "nextModel"},
         {components: [
@@ -53,5 +53,8 @@ enyo.kind({
     // the string value of the direction.
     showingTransform: function (value) {
         return value+1;
+    },
+    editingTransform: function (value) {
+        return true === value? "Done": "Edit";
     }
 });

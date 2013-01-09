@@ -24,6 +24,6 @@ enyo.kind({
         {from: "controller.header", to: "$.header.content", oneWay: true}
     ],
     components: [
-        {name: "header", tag: "h1"}
+        {name: "header"}
     ]
 });

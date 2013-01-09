@@ -4,7 +4,6 @@ enyo.depends(
 	"$lib/mvc",
 	"../assets/docco/docco.less",
 	"css",
-	"ext",
 	"models",
 	"controllers",
 	"views",

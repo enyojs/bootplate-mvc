@@ -1,27 +1,76 @@
- <!-- generated from template for documents.js -->      <section class="file">   <header>     <span class="title">Documents.js</span>     <span class="path">source/views/Main/Documents/Documents.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Sample.Documents</code> kind</h2>
-
-<p><code>Sample.Documents</code> is a special container kind that works in tandem
-with its controller, <code>Sample.DocumentsController</code>.  The controller
-is responsible for asynchronously loading static HTML "pagelets".
-This particular view is agnostic as to what pages actually exist
-or which one is selected (beyond knowing its index). It is bound
-to the <code>selected</code> property of its controller; when that value
-changes, <code>Sample.Documents</code> retrieves the pagelet content and injects 
-it into itself.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+ <!-- generated from template for documents.js -->      <div class="file">   <div>     <span class="title">Documents.js</span>     <span class="path">source/views/Main/Documents/Documents.js</span>   </div>             <div class="group">       <div class="comments">                </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.Documents&quot;</span><span class="p">,</span>
-    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;Sample.documents&quot;</span><span class="p">,</span>
+    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Panels&quot;</span><span class="p">,</span>
+    <span class="nx">arrangerKind</span><span class="o">:</span> <span class="s2">&quot;enyo.CollapsingArranger&quot;</span><span class="p">,</span>
+    <span class="nx">realtimeFit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;documents&quot;</span><span class="p">,</span>
-    <span class="nx">allowHtml</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>The <code>selected</code> property maps back to the controller's currently
-selected model by reference and is implemented via the binding.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">selected</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>We only need one binding to make this happen.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;controller.selected&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;selected&quot;</span><span class="p">}</span>
-    <span class="p">],</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>When the <code>selected</code> property is modified, check to make sure it
-exists; if it does, display that content. The proper CSS is
-already included for each pagelet.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">selectedChanged</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">doc</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">selected</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">doc</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;content&quot;</span><span class="p">,</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+    <span class="nx">selection</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;Sample.files&quot;</span><span class="p">,</span>
+    <span class="nx">ready</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.index&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.index&quot;</span><span class="p">,</span> <span class="nx">oneWay</span><span class="o">:</span> <span class="kc">false</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.selection&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.$.documentation.controller.model&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.selection&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.selection&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.ready&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.ready&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;welcome&quot;</span><span class="p">,</span> <span class="nx">allowHtml</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;documents-panel&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;tree&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Sample.FileTree&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;documents-panel layered&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;documentation&quot;</span><span class="p">,</span> <span class="nx">fit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Sample.DocumentationView&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;documents-panel layered&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;welcome&quot;</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">selectionChanged</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">selection</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;selection&quot;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">ready</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">ready</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">selection</span> <span class="o">&amp;&amp;</span> <span class="nx">ready</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">!==</span> <span class="nx">index</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">},</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>This is a computed property that, on its initial
+request will issue an asynchronous ajax call for
+the file content (html).</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">welcome</span><span class="o">:</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Computed</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">.</span><span class="nx">welcome</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>If the content parameter exists then we are
+being called as a setter.</p>       </div>       <div class="source">         <div class="highlight"><pre>            <span class="nx">child</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;content&quot;</span><span class="p">,</span> <span class="nx">content</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">reflow</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>We need to issue the ajax request for the
+html content of our welcome child-view.</p>       </div>       <div class="source">         <div class="highlight"><pre>            <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">({</span><span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;assets/Welcome.html&quot;</span><span class="p">,</span> <span class="nx">handleAs</span><span class="o">:</span> <span class="s2">&quot;text&quot;</span><span class="p">});</span>
+            <span class="nx">xhr</span><span class="p">.</span><span class="nx">response</span><span class="p">(</span><span class="nx">enyo</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">welcome</span><span class="p">)).</span><span class="nx">go</span><span class="p">();</span>
         <span class="p">}</span>
+    <span class="p">}),</span>
+    <span class="nx">reflow</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+        <span class="nx">enyo</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">child</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">ch</span><span class="p">;</span>
+            <span class="nx">child</span><span class="p">.</span><span class="nx">applyStyle</span><span class="p">(</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="s2">&quot;auto&quot;</span><span class="p">);</span>
+            <span class="nx">ch</span> <span class="o">=</span> <span class="nx">child</span><span class="p">.</span><span class="nx">getBounds</span><span class="p">().</span><span class="nx">height</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">&gt;</span> <span class="nx">height</span><span class="p">)</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">ch</span><span class="p">;</span>
+            <span class="nx">child</span><span class="p">.</span><span class="nx">applyStyle</span><span class="p">(</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">});</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">applyStyle</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="nx">height</span> <span class="o">+</span> <span class="s2">&quot;px&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">});</span>
 
-</pre></div>       </section>     </section>    </section>
+<span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.DocumentationView&quot;</span><span class="p">,</span>
+    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;enyo.ModelController&quot;</span><span class="p">,</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;documentation&quot;</span><span class="p">,</span>
+    <span class="nx">allowHtml</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.documentation&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.content&quot;</span><span class="p">,</span> <span class="nx">transform</span><span class="o">:</span> <span class="s2">&quot;safely&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">contentChanged</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">reflow</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="nx">safely</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">direction</span><span class="p">,</span> <span class="nx">binding</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">enyo</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+</pre></div>       </div>     </div>    </div>

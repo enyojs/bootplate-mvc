@@ -1,28 +1,43 @@
 @import "foss/elements.less";
 
+@media all and (min-device-width: 320px) and (max-device-width: 480px) {
+    #editor {
+        .input-label {
+            &.model-view {
+                padding: 0 5px 5px 5px;
+            }
+        }
+    }
+}
+
 // The CSS for the Mvc.Editor kind
 #editor {
     position: absolute;
     overflow: hidden;
-    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    
+    &> div {
+        padding: 10px;
+    }
+
+    
     .input-area {
-        position: absolute;
         box-sizing: border-box;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
+        width: 100%;
         height: 100px;
         textarea {
             width: 100%;
         }
     }
-    .done-button {
-        position: absolute;
-        right: 10px;
-        bottom: 120px;
-    }
+
     .input-label {
-        padding: 25px;
+        padding: 25px 25px 25px 25px;
+        position: relative;
+        bottom: 10px;
         &.model-view {
             box-sizing: border-box;
             background: #60c5ff;
@@ -31,6 +46,10 @@
             left: 10px;
             right: 10px;
             .rounded(5px);
+            
+            h3 {
+                margin: 0;
+            }
         }
     }
 }

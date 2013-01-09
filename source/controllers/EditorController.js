@@ -41,12 +41,5 @@ enyo.kind({
         // model-layer change, and the rest of the UI is automatically
         // updated to reflect the change.
         this.model.set({header: this.owner.$.input.get("value")});
-    },
-    // When the child view of the `owner` of this controller emits the
-    // `done` named handler event, it gets sent here to the controller
-    // (since it exists).
-    done: function () {
-        // We are all done editing and can reset the state property.
-        Sample.panels.set("isEditing", false);
     }
 });

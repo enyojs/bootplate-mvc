@@ -1,12 +1,28 @@
 @import "foss/elements.less";
 
+.roller-editor-container, .roller-editor {
+    position: relative;
+}
+
+.roller-editor {
+    height: 380px;
+}
+
+@media all and (min-device-width: 320px) and (max-device-width: 480px) {
+    .roller-editor-container, .roller-editor {
+        height: 100%;
+    }
+}
+
 // The CSS for the Mvc.Roller kind
 #roller {
-    &.roller-container {
-        width: 100%;
-        height: 400px;
-        .gradient(#60c5ff, #60c5ff, #bce7ff);
-    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background gradient
+    .gradient(#60c5ff, #60c5ff, #bce7ff);
     &.editing {
         .opacity(0.5);
         .transition(0.5s, ease-out);
@@ -28,10 +44,11 @@
 // The CSS for the Mvc.RollerPanel kind
 #roller-panels {
     .roller-panel {
-        padding: 20px;
+        padding: 0 20px;
+        box-sizing: border-box;
         display: table;
         height: 100%;
-        h1 {
+        div {
             color: #fff;
             font-weight: bold;
             display: table-cell;
