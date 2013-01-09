@@ -3,7 +3,7 @@
 // ---------------
 // We want there to be some messages in the roller when the user first
 // sees it, so we create an array of sample records and add these to the
-// collection during app startup. (You'll see this happen in `Core.js`.)
+// collection during app startup. (You'll see this happen in `start.js`.)
 enyo.ready(function () {
     Sample.Scaffold = {
         "Roller": [
