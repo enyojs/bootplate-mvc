@@ -37,6 +37,6 @@ enyo.kind({
     // `name` with the namespace of the given _kind_.
     controllers: [
         {name: "Sample.panels", kind: "Sample.PanelsController"},
-        {name: "Sample.documents", kind: "Sample.DocumentsController"}
+        {name: "Sample.files", kind: "Sample.FilesController"}
     ]
 });

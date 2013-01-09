@@ -32,15 +32,18 @@ enyo.kind({
         //
         // Bindings are one-way by default. We will see an example of a
         // two-way binding in another component.
-        {from: "Sample.panels.isEditing", to: "$.editor.showing"}
+        {from: "Sample.panels.isEditing", to: ".$.editor.showing"}
     ],
     handlers: {
         // Ugly hack for a Chrome-related bug.
         oninput: "chromeworkaround"
     },
     components: [
-        {name: "roller", kind: "Sample.Roller"},
-        {name: "editor", kind: "Sample.Editor"},
+        {kind: "enyo.FittableRows", classes: "roller-editor-container", components: [
+            {name: "toolbar", kind: "Sample.Toolbar"},
+            {classes: "roller-editor", components: [
+                {name: "roller", kind: "Sample.Roller"},
+                {name: "editor", kind: "Sample.Editor"}]}]},
         {name: "divider", kind: "Sample.Divider"},
         {name: "documents", kind: "Sample.Documents"},
         {name: "footer", id: "footer", tag: "footer"}

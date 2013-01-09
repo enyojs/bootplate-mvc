@@ -11,6 +11,7 @@
 enyo.kind({
     name: "Sample.Editor",
     id: "editor",
+    kind: "enyo.FittableRows",
     // We use a custom controller kind, which we call a "view controller"
     // because it is owned by this view and has awareness of it. Because
     // we set the `controller` property to a kind instead of an instance,
@@ -34,30 +35,24 @@ enyo.kind({
     // to the `content` property on the `label` child, but to the `value`
     // property on the `input` child.
     bindings: [
-        {from: "controller.header", to: "$.label.content"},
-        {from: "controller.header", to: "$.input.value"}
+        {from: ".controller.header", to: ".$.preview.content"},
+        {from: ".controller.header", to: ".$.input.value"}
     ],
-    // We use a custom layout kind that can be found in the `ext` directory
-    // in the project source.
-    layoutKind: "Sample.FitToTargetBoundsLayout",
-    // The layout looks for the `fitTarget` property when detecting the
-    // view for which we want to match the bounds. This is only necessary
-    // due to limitations in the way the CSS is applied--this editor
-    // becomes visible over the roller, but the roller's opacity changes.
-    // In order to keep our opacity unaffected, we have a different parent,
-    // but to match sizes we need to have a reference to the target view.
-    // The layout finds the target in the value of `fitTarget`and sets our
-    // bounds accordingly.
-    fitTarget: "owner.$.roller",
     components: [
-        {name: "info1", classes: "input-label", content: "There is a model " +
+        {name: "info", classes: "info", content: "There is a model " +
             "being used to store the message you see below. Edit it in the " +
             "textarea and see the real-time changes to the model and how they " +
             "propagate to the view"},
-        {name: "label", classes: "input-label model-view"},
-        {name: "done", kind: "onyx.Button", content: "Done Editing",
-            classes: "done-button", ontap: "done"},
-        {kind: "onyx.InputDecorator", classes: "input-area", components: [
-            {name: "input", kind: "onyx.TextArea"}]}
-    ]
+        {components: [{kind: "onyx.InputDecorator", classes: "input-area", components: [
+            {name: "input", kind: "onyx.TextArea", selectOnFocus: true}]}]},
+        {name: "label", classes: "input-label model-view", components: [
+            {content: "Preview:", tag: "h3"},
+            {name: "preview"}]}
+    ],
+    showingChanged: function () {
+        this.inherited(arguments);
+        if (true === this.showing) {
+            this.$.input.focus();
+        }
+    }
 });

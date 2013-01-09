@@ -1,0 +1,44 @@
+ <!-- generated from template for filetree.js -->      <section class="file">   <header>     <span class="title">FileTree.js</span>     <span class="path">source/views/Main/Documents/FileTree.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.FileTree&quot;</span><span class="p">,</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;tree&quot;</span><span class="p">,</span>
+    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;Sample.files&quot;</span><span class="p">,</span>
+    <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">tag</span><span class="o">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nx">tag</span><span class="o">:</span> <span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="nx">tag</span><span class="o">:</span> <span class="s2">&quot;span&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Project Files&quot;</span><span class="p">}]}]}</span>
+    <span class="p">],</span>
+    <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+
+<span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.Node&quot;</span><span class="p">,</span>
+    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Node&quot;</span><span class="p">,</span>
+    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;enyo.ModelController&quot;</span><span class="p">,</span>
+    <span class="nx">isDirectory</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">expandable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">expanded</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.isDirectory&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.isDirectory&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.isFile&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.isFile&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.basename&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.content&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">isDirectoryChanged</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="kc">true</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">isDirectory</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">,</span> <span class="s2">&quot;assets/folder-open.png&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">isFileChanged</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="kc">true</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">isFile</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">,</span> <span class="s2">&quot;assets/file.png&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">model</span><span class="o">:</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Computed</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">model</span><span class="o">:</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">})</span>
+<span class="p">});</span>
+
+</pre></div>       </section>     </section>    </section>
