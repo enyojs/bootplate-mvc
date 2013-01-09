@@ -39,7 +39,7 @@
     // have multiple event targets, which makes it a perfect fit for our
     // present needs.
     //
-    // A singleton instance of this kind is created in `Core.js` and
+    // A singleton instance of this kind is created in `Sample.js` and
     // shared between the `Documents.js` view and the `Divider.js` view.
     // Neither view is aware of the other, but `Divider.js` dispatches its
     // events to this controller, and when the `selected` property changes,

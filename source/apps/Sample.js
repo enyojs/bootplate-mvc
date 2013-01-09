@@ -39,7 +39,7 @@ enyo.kind({
     // It is possible to instantiate a controller in a different namespace
     // (or none at all) by setting `global: true` in its declaration. In
     // that case, the application will not attempt to prepend the
-    // namespace of the owning kind to controller's `name` property.
+    // namespace of the owning kind to the controller's `name` property.
     controllers: [
         {name: "Sample.panels", kind: "Sample.PanelsController"},
         {name: "Sample.documents", kind: "Sample.DocumentsController"}

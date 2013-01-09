@@ -2,8 +2,7 @@
 // The `Sample.PanelsController` kind
 // -------------------------------
 // This is the kind definition for the global singleton application
-// panels controller (`Sample.panels`) instantiated in the `main` function
-// in `Core.js`.
+// panels controller (`Sample.panels`) instantiated in `Sample.js`.
 enyo.kind({
     // We give the kind a name in the application namespace.
     name: "Sample.PanelsController",
