@@ -1,40 +1,45 @@
 
 // The `Sample.Application` kind
 // -----------------------------
-// There can be multiple `enyo.Application`s running simultaneously
-// if you needed. In our case, we only need one. That being said the
-// concept of an `enyo.Application` is simple: coordinate startup and
-// initialization of a group of objects, if there is a view, render that
-// when appropriate.
+// The job of an `enyo.Application` is straightforward--to coordinate
+// startup and the initialization of a group of objects and, if there is
+// a view, to render the view when appropriate.
+//
+// It's possible to have multiple instances of `enyo.Application` running
+// simultaneously, if needed; in our case, we only need one.
+
 enyo.kind({
-    // While the namespace of the application is `Sample` the namespace
-    // of the instanced application is up to the developers discretion.
-    // Go look at our `start.js` file if you haven't to see how this was
-    // done.
+    // While the namespace of the application is `Sample`, the namespace
+    // of the application instance is up to the developer's discretion.
+    // For more information, see the `start.js` file.
     name: "Sample.Application",
     kind: "enyo.Application",
-    // The `autoStart` flag is `true` by default but its explicitly
-    // designated here for clarity. Since it is true, the `enyo.Application`
-    // `start` method will be executed as soon as the constructor is called
-    // on our application.
+    // The `autoStart` flag is `true` by default, but it's explicitly
+    // designated here for clarity. Since the value is true, the
+    // `enyo.Application.start` method will be executed as soon as the
+    // constructor is called on our application.
     autoStart: true,
-    // Every application can potentially _own a single view_. This means that
-    // it can programatically determine when to render its _view_ into the
-    // DOM and where to render it when it does.
+    // Every application may potentially own a single view. This means
+    // that it may programatically determine when and where to render
+    // its view into the DOM.
     view: "Sample.RootView",
-    // The `enyo.Application` also lets us declare what controllers we want
-    // to initialize for this application at the _application scope_. This is
-    // a _very important concept_. Notice the name properties of these
-    // declarations and also note the namespace of this _kind_. Its `Sample`.
-    // By default, the `enyo.Application` will attempt to create instances of
-    // these controllers in the namespace of _the application kind that owns them_.
-    // In our case, this means that when the application is created there should
-    // immediately be available 2 controllers on the `Sample` object: `Sample.panels`
-    // and `Sample.documents`. This allows any other objects in the application to
-    // reference these controllers at those paths. It is possible to instantiate
-    // them in a different namespace (or none at all) by setting a flag on these
-    // declarations `global: true`. The application will not attempt to prefix the
-    // `name` with the namespace of the given _kind_.
+    // The `enyo.Application` also lets us declare the controllers we
+    // want to initialize for the application at the _application
+    // scope_. This is a very important concept.
+    //
+    // Notice the `name` properties of these declarations, as well as
+    // the namespace of this kind (`Sample`). By default, an
+    // `enyo.Application` will attempt to create instances of controllers
+    // in the namespace of the application kind that owns them. In our
+    // case, this means that when the application is created, there
+    // should be two controllers immediately available on the `Sample`
+    // object: `Sample.panels` and `Sample.documents`. Any other objects
+    // in the application may use these paths to reference the controllers.
+    //
+    // It is possible to instantiate a controller in a different namespace
+    // (or none at all) by setting `global: true` in its declaration. In
+    // that case, the application will not attempt to prepend the
+    // namespace of the owning kind to controller's `name` property.
     controllers: [
         {name: "Sample.panels", kind: "Sample.PanelsController"},
         {name: "Sample.documents", kind: "Sample.DocumentsController"}
