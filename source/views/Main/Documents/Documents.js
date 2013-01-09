@@ -71,7 +71,6 @@ enyo.kind({
         {from: ".controller.documentation", to: ".content", transform: "safely"}
     ],
     contentChanged: function () {
-        this.log();
         this.inherited(arguments);
         this.parent.reflow();
     },

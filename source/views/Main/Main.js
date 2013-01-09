@@ -41,7 +41,7 @@ enyo.kind({
     components: [
         {kind: "enyo.FittableRows", classes: "roller-editor-container", components: [
             {name: "toolbar", kind: "Sample.Toolbar"},
-            {classes: "roller-editor", components: [
+            {fit: true, classes: "roller-editor", components: [
                 {name: "roller", kind: "Sample.Roller"},
                 {name: "editor", kind: "Sample.Editor"}]}]},
         {name: "divider", kind: "Sample.Divider"},

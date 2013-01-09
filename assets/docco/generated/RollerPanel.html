@@ -1,25 +1,25 @@
- <!-- generated from template for rollerpanel.js -->      <section class="file">   <header>     <span class="title">RollerPanel.js</span>     <span class="path">source/views/Main/Roller/RollerPanel.js</span>   </header>             <section class="group">       <section class="comments">                </section>       <section class="source">         <div class="highlight"><pre></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <h2>The <code>Sample.RollerPanel</code> kind</h2>
+ <!-- generated from template for rollerpanel.js -->      <div class="file">   <div>     <span class="title">RollerPanel.js</span>     <span class="path">source/views/Main/Roller/RollerPanel.js</span>   </div>             <div class="group">       <div class="comments">                </div>       <div class="source">         <div class="highlight"><pre></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <h2>The <code>Sample.RollerPanel</code> kind</h2>
 
 <p>Each time a new record is added to the collection at runtime,
-a new panel based on this kind is created in our roller.</p>       </section>       <section class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+a new panel based on this kind is created in our roller.</p>       </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.RollerPanel&quot;</span><span class="p">,</span>
-    <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;roller-panel&quot;</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Each <code>Sample.RollerPanel</code> creates its own <code>enyo.ModelController</code>
+    <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;roller-panel&quot;</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>Each <code>Sample.RollerPanel</code> creates its own <code>enyo.ModelController</code>
 as its <code>controller</code>. This allows the <code>Sample.Roller</code> kind to set
 the newly created record as the value of this controller's
 <code>model</code> property. You can see this in action in the method
-<code>Sample.Roller.createPanelForModel()</code>.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;enyo.ModelController&quot;</span><span class="p">,</span>
+<code>Sample.Roller.createPanelForModel()</code>.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;enyo.ModelController&quot;</span><span class="p">,</span>
     <span class="nx">layoutKind</span><span class="o">:</span> <span class="s2">&quot;enyo.FittableRowsLayout&quot;</span><span class="p">,</span>
-    <span class="nx">fit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </section>     </section>             <section class="group">       <section class="comments">         <p>Making sure that our views have the corrent content is as
+    <span class="nx">fit</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>Making sure that our views have the corrent content is as
 easy as creating the bindings for them. Here we declare a
 binding from our controller's <code>header</code> property (remember
 this isn't a real property of the <code>enyo.ModelController</code>;
 it is proxied from the underlying model) to our child's
-<code>content</code>.</p>       </section>       <section class="source">         <div class="highlight"><pre>    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
+<code>content</code>.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;controller.header&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;$.header.content&quot;</span><span class="p">,</span> <span class="nx">oneWay</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
     <span class="p">],</span>
     <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="nx">tag</span><span class="o">:</span> <span class="s2">&quot;h1&quot;</span><span class="p">}</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;header&quot;</span><span class="p">}</span>
     <span class="p">]</span>
 <span class="p">});</span>
 
-</pre></div>       </section>     </section>    </section>
+</pre></div>       </div>     </div>    </div>

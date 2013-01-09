@@ -4,8 +4,8 @@ enyo.kind({
     id: "tree",
     controller: "Sample.files",
     components: [
-        {tag: "section", classes: "file", components: [
-            {tag: "header", components: [
+        {classes: "file", components: [
+            {components: [
                 {tag: "span", classes: "title", content: "Project Files"}]}]}
     ],
     create: function () {

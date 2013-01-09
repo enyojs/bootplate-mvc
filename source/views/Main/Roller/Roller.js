@@ -24,7 +24,7 @@ enyo.kind({
         {from: ".controller.isEditing", to: ".isEditing", oneWay: false},
         // We bind our child's `index` property to our controller's `index`
         // property in a two-way binding.
-        {from: ".$.panels.index", to: ".controller.index", oneWay: false},
+        {from: ".$.panels.index", to: ".controller.index", oneWay: false}
     ],
     // Not only have we wrapped the `enyo.Panels` views in this wrapper,
     // we've also set a very important property, `controller`, to the
@@ -32,7 +32,7 @@ enyo.kind({
     // thus giving us access to the collection and its events as well as
     // sending our events back to the controller.
     components: [
-        {name: "panels", kind: "enyo.Panels", draggable: false, fit: true,
+        {name: "panels", margin: 0, kind: "enyo.Panels", draggable: false, fit: true,
             id: "roller-panels", wrap: false, arrangerKind: "enyo.TopBottomArranger"}
     ],
     // This method handles the event notifying us that a new model has

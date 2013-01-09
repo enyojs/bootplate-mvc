@@ -6,20 +6,20 @@
   })();
 %>
 
-<section class="file">
-  <header>
+<div class="file">
+  <div>
     <span class="title"><%= title %></span>
     <span class="path"><%= source %></span>
-  </header>
+  </div>
   <% for (var i=0, len=sections.length; i<len; ++i) { %>
-    <% var section = sections[i]; %>
-    <section class="group">
-      <section class="comments">
-        <%= section.docsHtml %>
-      </section>
-      <section class="source">
-        <%= section.codeHtml %>
-      </section>
-    </section>
+    <% var div = sections[i]; %>
+    <div class="group">
+      <div class="comments">
+        <%= div.docsHtml %>
+      </div>
+      <div class="source">
+        <%= div.codeHtml %>
+      </div>
+    </div>
   <% } %>
-</section>
+</div>

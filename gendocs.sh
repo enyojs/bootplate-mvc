@@ -6,16 +6,14 @@ docco -t assets/docco/pagelet.jst -c assets/docco/docco.less \
     source/controllers/PanelsController.js \
     source/controllers/EditorController.js \
     source/controllers/FilesController.js \
-    source/ext/FitToTargetBoundsLayout.js \
-    source/ext/RollerLayout.js \
     source/models/collections/RollerCollection.js \
     source/models/collections/NodeCollection.js \
     source/models/models/RollerModel.js \
     source/models/models/NodeModel.js \
     source/models/Scaffold.js \
     source/views/RootView.js \
-    source/views/Editor.js \
-    source/views/Toolbar.js \
+    source/views/Main/Editor.js \
+    source/views/Main/Toolbar.js \
     source/views/Main/Divider.js \
     source/views/Main/Main.js \
     source/views/Main/Documents/Documents.js \
