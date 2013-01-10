@@ -1,12 +1,19 @@
- <!-- generated from template for filescontroller.js -->      <div class="file">   <div>     <span class="title">FilesController.js</span>     <span class="path">source/controllers/FilesController.js</span>   </div>             <div class="group">       <div class="comments">                </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+ <!-- generated from template for filescontroller.js -->      <div class="file">   <div>     <span class="title">FilesController.js</span>     <span class="path">source/controllers/FilesController.js</span>   </div>             <div class="group">       <div class="comments">                </div>       <div class="source">         <div class="highlight"><pre></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <h2>The <code>Sample.FilesController</code> kind</h2>
+
+<p>An overloaded <em>enyo.CollectionController</em> shared by
+multiple views and owned by one (<em>Sample.FileTree</em>).
+As its <em>models</em> changes it creates the nodes according
+to their paths effectively recreating the tree of the
+files and directories in our view.</p>       </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.FilesController&quot;</span><span class="p">,</span>
-    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.CollectionController&quot;</span><span class="p">,</span>
-    <span class="nx">collection</span><span class="o">:</span> <span class="s2">&quot;Sample.NodeCollection&quot;</span><span class="p">,</span>
-    <span class="nx">autoLoad</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">index</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.CollectionController&quot;</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>This is a class of <em>Backbone.Collection</em>.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">collection</span><span class="o">:</span> <span class="s2">&quot;Sample.NodeCollection&quot;</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>Since we have set a <em>url</em> property (or you could have
+overloaded the <em>sync</em> method of the Backbone.Collection
+according to its API) we can set the <em>autoLoad</em> flag to
+true and it will fire off the asynchronous request.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">autoLoad</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>We initialize a property called <em>index</em> that will be shared
+around the application to control its state.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">index</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nx">ready</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nx">handlers</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">oncollectionreset</span><span class="o">:</span> <span class="s2">&quot;didReset&quot;</span>
+    <span class="nx">handlers</span><span class="o">:</span> <span class="p">{</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>A special event fired by collection controllers when their
+underlying <em>Backbone.Collection</em> is reset.</p>       </div>       <div class="source">         <div class="highlight"><pre>        <span class="nx">oncollectionreset</span><span class="o">:</span> <span class="s2">&quot;didReset&quot;</span>
     <span class="p">},</span>
     <span class="nx">didReset</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">syncModelsToNodes</span><span class="p">();</span>
@@ -55,9 +62,11 @@
                 <span class="nx">name</span><span class="o">:</span> <span class="nx">basename</span><span class="p">,</span>
                 <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Sample.Node&quot;</span>
             <span class="p">});</span>
-        <span class="p">}</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>note this is one-way entry for this view-kind
+        <span class="p">}</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>Note this is one-way entry for this view-kind
 as it was not designed to worry about removal
-of nodes once they are entered</p>       </div>       <div class="source">         <div class="highlight"><pre>        <span class="k">this</span><span class="p">.</span><span class="nx">setFilePath</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+of nodes once they are entered. If this was to be used
+and allow the removal of nodes it would need to cleanup
+the stored references.</p>       </div>       <div class="source">         <div class="highlight"><pre>        <span class="k">this</span><span class="p">.</span><span class="nx">setFilePath</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
         <span class="nx">node</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="nx">model</span><span class="p">);</span>
         <span class="nx">view</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
     <span class="p">},</span>

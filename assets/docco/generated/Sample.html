@@ -1,31 +1,35 @@
  <!-- generated from template for sample.js -->      <div class="file">   <div>     <span class="title">Sample.js</span>     <span class="path">source/apps/Sample.js</span>   </div>             <div class="group">       <div class="comments">                </div>       <div class="source">         <div class="highlight"><pre></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <h2>The <code>Sample.Application</code> kind</h2>
 
-<p>There can be multiple <code>enyo.Application</code>s running simultaneously
-if you needed. In our case, we only need one. That being said the
-concept of an <code>enyo.Application</code> is simple: coordinate startup and
-initialization of a group of objects, if there is a view, render that
-when appropriate.</p>       </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>While the namespace of the application is <code>Sample</code> the namespace
-of the instanced application is up to the developers discretion.
-Go look at our <code>start.js</code> file if you haven't to see how this was
-done.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.Application&quot;</span><span class="p">,</span>
-    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Application&quot;</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>The <code>autoStart</code> flag is <code>true</code> by default but its explicitly
-designated here for clarity. Since it is true, the <code>enyo.Application</code>
-<code>start</code> method will be executed as soon as the constructor is called
-on our application.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">autoStart</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>Every application can potentially <em>own a single view</em>. This means that
-it can programatically determine when to render its <em>view</em> into the
-DOM and where to render it when it does.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">view</span><span class="o">:</span> <span class="s2">&quot;Sample.RootView&quot;</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>The <code>enyo.Application</code> also lets us declare what controllers we want
-to initialize for this application at the <em>application scope</em>. This is
-a <em>very important concept</em>. Notice the name properties of these
-declarations and also note the namespace of this <em>kind</em>. Its <code>Sample</code>.
-By default, the <code>enyo.Application</code> will attempt to create instances of
-these controllers in the namespace of <em>the application kind that owns them</em>.
-In our case, this means that when the application is created there should
-immediately be available 2 controllers on the <code>Sample</code> object: <code>Sample.panels</code>
-and <code>Sample.documents</code>. This allows any other objects in the application to
-reference these controllers at those paths. It is possible to instantiate
-them in a different namespace (or none at all) by setting a flag on these
-declarations <code>global: true</code>. The application will not attempt to prefix the
-<code>name</code> with the namespace of the given <em>kind</em>.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span>
+<p>The job of an <code>enyo.Application</code> is straightforward--to coordinate
+startup and the initialization of a group of objects and, if there is
+a view, to render the view when appropriate.</p>
+
+<p>It's possible to have multiple instances of <code>enyo.Application</code> running
+simultaneously, if needed; in our case, we only need one.</p>       </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>While the namespace of the application is <code>Sample</code>, the namespace
+of the application instance is up to the developer's discretion.
+For more information, see the <code>start.js</code> file.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.Application&quot;</span><span class="p">,</span>
+    <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Application&quot;</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>The <code>autoStart</code> flag is <code>true</code> by default, but it's explicitly
+designated here for clarity. Since the value is true, the
+<code>enyo.Application.start</code> method will be executed as soon as the
+constructor is called on our application.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">autoStart</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>Every application may potentially own a single view. This means
+that it may programatically determine when and where to render
+its view into the DOM.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">view</span><span class="o">:</span> <span class="s2">&quot;Sample.RootView&quot;</span><span class="p">,</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>The <code>enyo.Application</code> also lets us declare the controllers we
+want to initialize for the application at the <em>application
+scope</em>. This is a very important concept.</p>
+
+<p>Notice the <code>name</code> properties of these declarations, as well as
+the namespace of this kind (<code>Sample</code>). By default, an
+<code>enyo.Application</code> will attempt to create instances of controllers
+in the namespace of the application kind that owns them. In our
+case, this means that when the application is created, there
+should be two controllers immediately available on the <code>Sample</code>
+object: <code>Sample.panels</code> and <code>Sample.documents</code>. Any other objects
+in the application may use these paths to reference the controllers.</p>
+
+<p>It is possible to instantiate a controller in a different namespace
+(or none at all) by setting <code>global: true</code> in its declaration. In
+that case, the application will not attempt to prepend the
+namespace of the owning kind to the controller's <code>name</code> property.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.panels&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Sample.PanelsController&quot;</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.files&quot;</span><span class="p">,</span> <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;Sample.FilesController&quot;</span><span class="p">}</span>
     <span class="p">]</span>
