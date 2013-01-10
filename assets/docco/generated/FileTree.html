@@ -1,20 +1,31 @@
- <!-- generated from template for filetree.js -->      <div class="file">   <div>     <span class="title">FileTree.js</span>     <span class="path">source/views/Main/Documents/FileTree.js</span>   </div>             <div class="group">       <div class="comments">                </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+ <!-- generated from template for filetree.js -->      <div class="file">   <div>     <span class="title">FileTree.js</span>     <span class="path">source/views/Main/Documents/FileTree.js</span>   </div>             <div class="group">       <div class="comments">                </div>       <div class="source">         <div class="highlight"><pre></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <h2>The <code>Sample.FileTree</code> kind</h2>
+
+<p>This is a very special view that builds a file-tree
+from the models of its controller. It also very carefully
+elects to set the <em>owner</em> property of its controller so
+the controller will updated it accordingly.</p>       </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.FileTree&quot;</span><span class="p">,</span>
     <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;tree&quot;</span><span class="p">,</span>
     <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;Sample.files&quot;</span><span class="p">,</span>
     <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="nx">tag</span><span class="o">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
-            <span class="p">{</span><span class="nx">tag</span><span class="o">:</span> <span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
                 <span class="p">{</span><span class="nx">tag</span><span class="o">:</span> <span class="s2">&quot;span&quot;</span><span class="p">,</span> <span class="nx">classes</span><span class="o">:</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s2">&quot;Project Files&quot;</span><span class="p">}]}]}</span>
     <span class="p">],</span>
     <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">inherited</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>By default, when an instance of a controller is assigned to
+a view it does not set the <em>owner</em> property of the controller
+to itself. If the view creates an instance of the controller
+kind it will. In this case, it is an instance of a controller
+that is shared by other views but it was designed to interact
+<em>on</em> (not just <em>to</em>) this view so we elect to set its <em>owner</em>
+property anyways.</p>       </div>       <div class="source">         <div class="highlight"><pre>        <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">});</span>
+<span class="p">});</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <h2>The <code>Sample.Node</code> kind</h2>
 
-
-<span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
+<p>A special sub-kind of the <em>enyo.Node</em> kind that will
+automatically use the correct icon accoring to the attributes
+of the model assigned to its controller.</p>       </div>       <div class="source">         <div class="highlight"><pre><span class="nx">enyo</span><span class="p">.</span><span class="nx">kind</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Sample.Node&quot;</span><span class="p">,</span>
     <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;enyo.Node&quot;</span><span class="p">,</span>
     <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;enyo.ModelController&quot;</span><span class="p">,</span>
@@ -35,8 +46,8 @@
         <span class="k">if</span> <span class="p">(</span><span class="kc">true</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">isFile</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">,</span> <span class="s2">&quot;assets/file.png&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nx">model</span><span class="o">:</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Computed</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="p">},</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>A computed property that is used by the <em>Sample.FileTree</em> parent
+when building the tree.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">model</span><span class="o">:</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Computed</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">model</span><span class="o">:</span> <span class="kc">null</span><span class="p">;</span>
     <span class="p">})</span>
 <span class="p">});</span>
