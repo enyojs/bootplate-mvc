@@ -1,12 +1,28 @@
 
+// The `Sample.FilesController` kind
+// ---------------------------------
+// An overloaded _enyo.CollectionController_ shared by
+// multiple views and owned by one (_Sample.FileTree_).
+// As its _models_ changes it creates the nodes according
+// to their paths effectively recreating the tree of the
+// files and directories in our view.
 enyo.kind({
     name: "Sample.FilesController",
     kind: "enyo.CollectionController",
+    // This is a class of _Backbone.Collection_.
     collection: "Sample.NodeCollection",
+    // Since we have set a _url_ property (or you could have
+    // overloaded the _sync_ method of the Backbone.Collection
+    // according to its API) we can set the _autoLoad_ flag to
+    // true and it will fire off the asynchronous request.
     autoLoad: true,
+    // We initialize a property called _index_ that will be shared
+    // around the application to control its state.
     index: 0,
     ready: false,
     handlers: {
+        // A special event fired by collection controllers when their
+        // underlying _Backbone.Collection_ is reset.
         oncollectionreset: "didReset"
     },
     didReset: function () {
@@ -57,9 +73,11 @@ enyo.kind({
                 kind: "Sample.Node"
             });
         }
-        // note this is one-way entry for this view-kind
+        // Note this is one-way entry for this view-kind
         // as it was not designed to worry about removal
-        // of nodes once they are entered
+        // of nodes once they are entered. If this was to be used
+        // and allow the removal of nodes it would need to cleanup
+        // the stored references.
         this.setFilePath(path, node);
         node.controller.set("model", model);
         view.render();
