@@ -17,11 +17,14 @@ enyo.kind({
         // that's bubbling up from the collection controller.
         oncollectionadd: "didAddModel"
     },
+    isEditing: false,
+    isStarted: false,
     bindings: [
         // We've bound the `isEditing` state property to a local `isEditing`
         // property so we can get change notifications; this is a two-way
         // binding.
         {from: ".controller.isEditing", to: ".isEditing", oneWay: false},
+        {from: ".controller.isStarted", to: ".isStarted"},
         // We bind our child's `index` property to our controller's `index`
         // property in a two-way binding.
         {from: ".$.panels.index", to: ".controller.index", oneWay: false}
@@ -48,7 +51,7 @@ enyo.kind({
         // the editor will become visible. Obviously, this is an indirect
         // reaction to the state change. This view does not need to be aware
         // of any details in the rest of the app.
-        this.set("isEditing", true);
+        if (true === this.isStarted) this.set("isEditing", true);
     },
     // Creates a panel for a model.
     createPanelForModel: function (model) {
