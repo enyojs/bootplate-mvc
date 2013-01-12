@@ -17,8 +17,9 @@ enyo.ready(function () {
     // When our application renders for the first time, we want it to
     // have some sample data to display. We'll use data that we've
     // prepared specifically for this purpose in the file
-    // `models/Scaffold.js`.
-    Sample.panels.add(Sample.Scaffold.Roller);
+    // `models/Scaffold.js`. Check out the overloaded _load_ method
+    // in the Sample.panels controller.
+    Sample.panels.load();
     // Now that we have data for the view layer to display, let's go
     // ahead and render it to the DOM. We could have had the application
     // automatically render upon creation, but in `apps/Sample.js` we

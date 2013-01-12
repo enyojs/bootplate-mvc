@@ -24,6 +24,7 @@ enyo.kind({
     // any other component in the application may respond to it as
     // well (as we will see).
     isEditing: false,
+    ready: false,
     // This is an example of abstracting common elements to the
     // outermost commonly-available controller to be shared between
     // objects that have no direct connection but may share some
@@ -63,18 +64,18 @@ enyo.kind({
     // When the `"Next"` button is tapped, we have some additional things
     // to do to prepare the operation.
     nextModel: function () {
-      // We freeze the current timer-driven operation/animation.
-      this.stop();
-      // We call our `next` method to select the next index.
-      this.next();
-      // Then we restart the timer operation to ensure the animation will
-      // continue.
-      if (!this.isEditing) this.start();
+        // We freeze the current timer-driven operation/animation.
+        this.stop();
+        // We call our `next` method to select the next index.
+        this.next();
+        // Then we restart the timer operation to ensure the animation will
+        // continue.
+        if (!this.isEditing) this.start();
     },
     // Begins animation of any of the panels for the roller.
     start: function () {
         // If we're already started, we have nothing to do.
-        if (this.isStarted) return;
+        if (this.isStarted || !this.ready) return;
         // Assign the `timer` property as we create a loop to animate
         // every 5 seconds. A great opportunity to use `enyo.bind`.
         this.timer = setInterval(enyo.bind(this, this.next), 5000);
@@ -113,6 +114,7 @@ enyo.kind({
     // is modified, the `isEditingChanged` method will be called (if
     // such a method exists).
     isEditingChanged: function () {
+        this.log(this.isEditing);
         // If we are editing now, stop animating.
         if (this.isEditing === true) this.stop();
         // Otherwise, start animating because we just left the editing
@@ -127,5 +129,20 @@ enyo.kind({
         if (this.length > 1) this.start();
         // If the length has fallen to 1, stop animating.
         if (this.length <= 1) this.stop();
+    },
+    // When are ready state is changed we set our index to zero for
+    // good measure and then we're ready to start the animations.
+    readyChanged: function () {
+        if (this.ready) {
+            this.set("index", 0);
+            this.start();
+        }
+    },
+    // Normally the _load_ method would call the Backbone.sync method
+    // of our collection but we are loading from scaffolding so we simply
+    // overloaded it to do what we wanted.
+    load: function () {
+        this.add(Sample.Scaffold.Roller);
+        this.set("ready", true);
     }
 });
