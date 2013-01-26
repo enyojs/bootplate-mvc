@@ -23,7 +23,7 @@ enyo.kind({
     handlers: {
         // A special event fired by collection controllers when their
         // underlying _Backbone.Collection_ is reset.
-        oncollectionreset: "didReset"
+        didreset: "didReset"
     },
     didReset: function () {
         this.syncModelsToNodes();

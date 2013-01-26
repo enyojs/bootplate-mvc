@@ -13,7 +13,7 @@ true and it will fire off the asynchronous request.</p>       </div>       <div 
 around the application to control its state.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">index</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nx">ready</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nx">handlers</span><span class="o">:</span> <span class="p">{</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>A special event fired by collection controllers when their
-underlying <em>Backbone.Collection</em> is reset.</p>       </div>       <div class="source">         <div class="highlight"><pre>        <span class="nx">oncollectionreset</span><span class="o">:</span> <span class="s2">&quot;didReset&quot;</span>
+underlying <em>Backbone.Collection</em> is reset.</p>       </div>       <div class="source">         <div class="highlight"><pre>        <span class="nx">didreset</span><span class="o">:</span> <span class="s2">&quot;didReset&quot;</span>
     <span class="p">},</span>
     <span class="nx">didReset</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">syncModelsToNodes</span><span class="p">();</span>

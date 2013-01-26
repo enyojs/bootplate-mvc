@@ -16,7 +16,6 @@ enyo.kind({
     // view and all bubbled events are also passed to us. We have access
     // to the entirety of the view that owns us via the `owner` property.
     handlers: {
-        oninput: "input",
         onready: "indexChanged"
     },
     constructor: function () {
@@ -33,13 +32,6 @@ enyo.kind({
     indexChanged: function () {
         var idx = this.index;
         var model = Sample.panels.at(idx);
-        if (model && model !== this.model) this.set("model", model);
-    },
-    input: function () {
-        // Very important: Let changes in the model propagate to changes
-        // in the view. We translate a UI-layer `oninput` event into a
-        // model-layer change, and the rest of the UI is automatically
-        // updated to reflect the change.
-        this.model.set({header: this.owner.$.input.get("value")});
+        if (model && model !== this.get("model")) this.set("model", model);
     }
 });
