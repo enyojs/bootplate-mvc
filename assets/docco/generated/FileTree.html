@@ -48,7 +48,7 @@ of the model assigned to its controller.</p>       </div>       <div class="sour
         <span class="p">}</span>
     <span class="p">},</span></pre></div>       </div>     </div>             <div class="group">       <div class="comments">         <p>A computed property that is used by the <em>Sample.FileTree</em> parent
 when building the tree.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">model</span><span class="o">:</span> <span class="nx">enyo</span><span class="p">.</span><span class="nx">Computed</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">model</span><span class="o">:</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">controller</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">:</span> <span class="kc">null</span><span class="p">;</span>
     <span class="p">})</span>
 <span class="p">});</span>
 
