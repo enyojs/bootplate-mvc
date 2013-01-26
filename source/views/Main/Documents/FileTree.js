@@ -57,6 +57,6 @@ enyo.kind({
     // A computed property that is used by the _Sample.FileTree_ parent
     // when building the tree.
     model: enyo.Computed(function () {
-        return this.controller? this.controller.model: null;
+        return this.controller? this.controller.get("model"): null;
     })
 });

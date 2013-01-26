@@ -15,7 +15,7 @@ binding from our controller's <code>header</code> property (remember
 this isn't a real property of the <code>enyo.ModelController</code>;
 it is proxied from the underlying model) to our child's
 <code>content</code>.</p>       </div>       <div class="source">         <div class="highlight"><pre>    <span class="nx">bindings</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;controller.header&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;$.header.content&quot;</span><span class="p">,</span> <span class="nx">oneWay</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+        <span class="p">{</span><span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;.controller.header&quot;</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;.$.header.content&quot;</span><span class="p">}</span>
     <span class="p">],</span>
     <span class="nx">components</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;header&quot;</span><span class="p">}</span>

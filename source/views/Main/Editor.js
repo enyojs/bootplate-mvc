@@ -36,7 +36,7 @@ enyo.kind({
     // property on the `input` child.
     bindings: [
         {from: ".controller.header", to: ".$.preview.content"},
-        {from: ".controller.header", to: ".$.input.value"}
+        {from: ".controller.header", to: ".$.input.value", oneWay: false}
     ],
     components: [
         {name: "info", classes: "info", content: "There is a model " +

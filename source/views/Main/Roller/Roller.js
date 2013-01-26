@@ -15,7 +15,7 @@ enyo.kind({
     handlers: {
         // We need to provide our own handler for the event
         // that's bubbling up from the collection controller.
-        oncollectionadd: "didAddModel"
+        didadd: "didAdd"
     },
     isEditing: false,
     isStarted: false,
@@ -40,18 +40,23 @@ enyo.kind({
     ],
     // This method handles the event notifying us that a new model has
     // been added. The event is dispatched from the panels controller.
-    didAddModel: function (sender, event) {
-        var model = event.model;
-        // So we create a panel from the new model.
-        this.createPanelForModel(model);
-        // We update the index of our actual `enyo.Panels` child to that
-        // of the new model so it is the one visible.
-        this.$.panels.set("index", this.controller.indexOf(model));
-        // We set our (two-way) binding state for `isEditing` to `true` so
-        // the editor will become visible. Obviously, this is an indirect
-        // reaction to the state change. This view does not need to be aware
-        // of any details in the rest of the app.
-        if (true === this.isStarted) this.set("isEditing", true);
+    didAdd: function (sender, event) {
+        var models = event.values;
+        var model;
+        var idx;
+        for (idx in models) {
+            model = models[idx];
+            // So we create a panel from the new model.
+            this.createPanelForModel(model);
+            // We update the index of our actual `enyo.Panels` child to that
+            // of the new model so it is the one visible.
+            this.$.panels.set("index", this.controller.indexOf(model));
+            // We set our (two-way) binding state for `isEditing` to `true` so
+            // the editor will become visible. Obviously, this is an indirect
+            // reaction to the state change. This view does not need to be aware
+            // of any details in the rest of the app.
+            if (true === this.isStarted) this.set("isEditing", true);
+        }
     },
     // Creates a panel for a model.
     createPanelForModel: function (model) {

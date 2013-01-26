@@ -21,7 +21,7 @@ enyo.kind({
     // it is proxied from the underlying model) to our child's
     // `content`.
     bindings: [
-        {from: "controller.header", to: "$.header.content", oneWay: true}
+        {from: ".controller.header", to: ".$.header.content"}
     ],
     components: [
         {name: "header"}
