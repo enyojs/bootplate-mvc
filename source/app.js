@@ -35,6 +35,7 @@ enyo.kind({
                 kind: "wip.Repeater",
                 controller: "Bootplate.arrayController",
                 components: [{
+                    classes: "nice-padding",
                     bindFrom: "message"
                 }]
             }]
