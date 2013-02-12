@@ -1,3 +1,12 @@
 [submodule "enyo"]
 	path = enyo
 	url = git@github.com:clinuz/enyo.git
+[submodule "lib/onyx"]
+	path = lib/onyx
+	url = git@github.com:clinuz/onyx.git
+[submodule "lib/layout"]
+	path = lib/layout
+	url = git@github.com:clinuz/layout.git
+[submodule "lib/mvc"]
+	path = lib/mvc
+	url = git@github.com:clinuz/mvc.git
