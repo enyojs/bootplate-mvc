@@ -18,8 +18,7 @@ enyo.kind({
         bindings: [{
             from: "Bootplate.bindingController.data",
             to: ".$.input.value",
-            transform: "placeholder",
-            oneWay: false
+            kind: "enyo.InputBinding"
         }, {
             from: "Bootplate.bindingController.data",
             to: ".$.toolbar.content"
@@ -54,9 +53,6 @@ enyo.kind({
                     placeholder: "Watch bindings work"
                 }]
             }]
-        }],
-        placeholder: function (value, direction, binding) {
-            return value? value: this.$.input.placeholder;
-        }
+        }]
     }
 });
