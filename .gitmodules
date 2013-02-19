@@ -7,3 +7,6 @@
 [submodule "lib/layout"]
 	path = lib/layout
 	url = git://github.com/clinuz/layout.git
+[submodule "lib/backbone-support"]
+	path = lib/backbone-support
+	url = git@github.com:clinuz/backbone-support.git
