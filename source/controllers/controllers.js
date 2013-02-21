@@ -1,0 +1,3 @@
+enyo.ready(function () {
+    
+});
