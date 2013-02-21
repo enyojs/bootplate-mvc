@@ -1,3 +1,3 @@
 enyo.ready(function () {
-    app = new Bootplate.Application();
+    new Bootplate.Application({name: "app"});
 });

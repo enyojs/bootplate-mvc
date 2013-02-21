@@ -2,57 +2,16 @@ enyo.kind({
     name: "Bootplate.Application",
     kind: "enyo.Application",
     controllers: [{
-        name: "Bootplate.bindingController",
-        kind: "enyo.Controller",
-        data: "Hello World",
-        addRecord: function (sender, event) {
-            Bootplate.arrayController.add({message: this.get("data")});
-        }
+        name: "message",
+        kind: "Bootplate.MessageController"
     }, {
-        name: "Bootplate.arrayController",
-        kind: "enyo.ArrayController"
+        name: "messages",
+        kind: "Bootplate.MessagesController"
     }],
-    view: {
-    	kind: "FittableRows",
-    	fit: true,
-        bindings: [{
-            from: "Bootplate.bindingController.data",
-            to: ".$.input.value",
-            kind: "enyo.InputBinding"
-        }, {
-            from: "Bootplate.bindingController.data",
-            to: ".$.toolbar.content"
-        }],
-        components: [{
-            name: "toolbar",
-            kind: "onyx.Toolbar"
-        }, {
-            kind: "enyo.Scroller",
-            fit: true,
-            components: [{
-                name: "main",
-                kind: "wip.Repeater",
-                controller: "Bootplate.arrayController",
-                components: [{
-                    classes: "nice-padding",
-                    bindFrom: "message"
-                }]
-            }]
-        }, {
-            kind: "onyx.Toolbar",
-            components: [{
-                kind: "onyx.Button",
-                content: "Record Entry",
-                ontap: "addRecord",
-                controller: "Bootplate.bindingController"
-            }, {
-                kind: "onyx.InputDecorator",
-                components: [{
-                    name: "input",
-                    kind: "onyx.Input",
-                    placeholder: "Watch bindings work"
-                }]
-            }]
-        }]
+    view: "Bootplate.MainView",
+    addRecord: function (sender, event) {
+        var data = this.controllers.message.get("data");
+        var messages = this.controllers.messages;
+        messages.add({message: data});
     }
 });
