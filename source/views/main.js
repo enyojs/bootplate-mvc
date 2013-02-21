@@ -32,8 +32,7 @@ enyo.ready(function () {
             components: [{
                 kind: "onyx.Button",
                 content: "Record Entry",
-                ontap: "addRecord",
-                controller: ".app.controllers.message"
+                ontap: "addRecord"
             }, {
                 kind: "onyx.InputDecorator",
                 components: [{
