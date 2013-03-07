@@ -8,7 +8,7 @@ enyo.kind({
     id: "divider",
     kind: "onyx.Toolbar",
     // The _Sample.files_ controller has an API for controlling its
-    // _index_ property (the same one that controlls the panels beneath
+    // _index_ property (the same one that controls the panels beneath
     // this view). The buttons on this toolbar have their _ontap_ events
     // properly mapped to that API and since the controller property of
     // this view is set to _Sample.files_ it will receive and handle those
