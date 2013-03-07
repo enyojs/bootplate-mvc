@@ -18,7 +18,7 @@ enyo.kind({
     // a kind reference and it will instantiate the collection kind when
     // it is created.
     collection: "Sample.RollerCollection",
-    // The entire application has state. One possible state is the
+    // The entire application has states. One possible state
     // is the editing state. While the `isEditing` property is
     // designed to be used directly with the `Sample.Roller` view kind,
     // any other component in the application may respond to it as
@@ -130,7 +130,7 @@ enyo.kind({
         // If the length has fallen to 1, stop animating.
         if (this.length <= 1) this.stop();
     },
-    // When are ready state is changed we set our index to zero for
+    // When ready state is changed we set our index to zero for
     // good measure and then we're ready to start the animations.
     readyChanged: function () {
         if (this.ready) {
