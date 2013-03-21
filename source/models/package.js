@@ -1,3 +1,3 @@
 enyo.depends(
-    "models.js"
+	"models.js"
 );

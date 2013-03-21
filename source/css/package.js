@@ -1,4 +1,4 @@
 enyo.depends(
-    // "theme.less",
-    "app.css"
+	// "theme.less",
+	"app.css"
 );
