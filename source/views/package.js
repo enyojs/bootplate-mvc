@@ -1,4 +1,3 @@
 enyo.depends(
-    "Main",
-    "RootView.js"
+	"main.js"
 );

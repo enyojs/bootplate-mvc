@@ -1,9 +1,4 @@
 enyo.depends(
-    "RootView.less",
-    "Roller.less",
-    "Main.less",
-    "Editor.less",
-    "Divider.less",
-    "Toolbar.less",
-    "Documents.less"
+	// "theme.less",
+	"app.css"
 );
