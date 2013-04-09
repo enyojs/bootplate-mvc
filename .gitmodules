@@ -7,6 +7,3 @@
 [submodule "lib/layout"]
 	path = lib/layout
 	url = git://github.com/enyojs/layout.git
-[submodule "lib/backbone-support"]
-	path = lib/backbone-support
-	url = git://github.com/enyojs/backbone-support.git
