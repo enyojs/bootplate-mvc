@@ -2,7 +2,6 @@ enyo.depends(
 	// include support libraries
 	"$lib/layout",
 	"$lib/onyx",
-	"$lib/backbone-support",
 	// include application sources
 	"css",
 	"models",
