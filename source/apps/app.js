@@ -9,7 +9,10 @@ enyo.kind({
 		kind: "Bootplate.MessagesController"
 	}],
 	view: "Bootplate.MainView",
-	addRecord: function (sender, event) {
+	handlers: {
+		onAddRecord: "handleAddRecord"
+	},
+	handleAddRecord: function (sender, event) {
 		var data = this.controllers.message.get("data");
 		var messages = this.controllers.messages;
 		messages.add({message: data});
