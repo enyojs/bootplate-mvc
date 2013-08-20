@@ -1,3 +1,0 @@
-enyo.ready(function () {
-	
-});
