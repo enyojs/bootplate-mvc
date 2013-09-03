@@ -31,11 +31,12 @@ enyo.kind({
 					content: "Message: "
 				}, {
 					tag: "span",
+					name: "message",
 					classes: "nice-padding",
-					bindings: [
-						{from: ".model.message", to: ".content"}
-					]
-				}]
+				}],
+				bindings: [
+					{from: ".model.message", to: ".$.message.content"}
+				]
 			}]
 		}]
 	}, {
