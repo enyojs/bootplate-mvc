@@ -7,11 +7,11 @@ enyo.kind({
 		onAddRecord: ""
 	},
 	bindings: [{
-		from: ".app.controllers.message.data",
+		from: ".app.$.message.data",
 		to: ".$.input.value",
 		kind: "enyo.InputBinding"
 	}, {
-		from: ".app.controllers.message.data",
+		from: ".app.$.message.data",
 		to: ".$.toolbar.content"
 	}],
 	components: [{
@@ -23,7 +23,7 @@ enyo.kind({
 		components: [{
 			name: "main",
 			kind: "enyo.DataRepeater",
-			controller: ".app.controllers.messages",
+			controller: ".app.$.messages",
 			components: [{
 				classes: "nice-padding",
 				components: [{
