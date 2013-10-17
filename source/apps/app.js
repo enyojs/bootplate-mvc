@@ -1,7 +1,7 @@
 enyo.kind({
 	name: "Bootplate.Application",
 	kind: "enyo.Application",
-	controllers: [{
+	components: [{
 		name: "message",
 		kind: "Bootplate.MessageController"
 	}, {
@@ -13,8 +13,7 @@ enyo.kind({
 		onAddRecord: "handleAddRecord"
 	},
 	handleAddRecord: function (sender, event) {
-		var data = this.controllers.message.get("data");
-		var messages = this.controllers.messages;
-		messages.add({message: data});
+		var data = this.$.message.get("data");
+		this.$.messages.add({"message": data});
 	}
 });
