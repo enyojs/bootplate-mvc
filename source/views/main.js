@@ -23,7 +23,7 @@ enyo.kind({
 		components: [{
 			name: "main",
 			kind: "enyo.DataRepeater",
-			controller: ".app.$.messages",
+			collection: ".app.$.messages",
 			components: [{
 				classes: "nice-padding",
 				components: [{
